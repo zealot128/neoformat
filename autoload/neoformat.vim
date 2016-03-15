@@ -1,0 +1,202 @@
+let s:jobs = {}
+
+" stores the current formatter being used among the formatters defined for the filetype
+let s:formatters_cur = 0
+
+function! g:neoformat#NeoformatRun(cmd) abort
+
+    let l:job = {
+                \ 'stderr' : [],
+                \ 'stdout' : [],
+                \ 'on_stdout': function('s:on_stdout'),
+                \ 'on_stderr': function('s:on_stderr'),
+                \ 'on_exit' : function('s:on_exit'),
+                \ }
+
+    if type(a:cmd) ==# type([])
+        let l:cmd = a:cmd
+    else
+        let l:cmd = split(a:cmd)
+    endif
+
+    try
+        let l:id = jobstart(l:cmd, l:job)
+    catch
+        echom "Neoformat: trying next formatter"
+        call g:neoformat#Neoformat(s:formatters_cur + 1)
+        return
+    endtry
+
+    let l:job.id = l:id
+
+    let s:jobs[l:id] = l:job
+    return l:id
+endfunction
+
+
+function! s:on_stdout(job_id, data) abort
+    if !has_key(s:jobs, a:job_id)
+        return
+    endif
+    let l:job = s:jobs[a:job_id]
+
+    call extend(l:job.stdout, a:data)
+endfunction
+
+
+function! s:on_stderr(job_id, data) abort
+    if !has_key(s:jobs, a:job_id)
+        return
+    endif
+    let l:job = s:jobs[a:job_id]
+
+    call extend(l:job.stderr, a:data)
+endfunction
+
+
+function! s:on_exit(job_id, data) abort
+    if !has_key(s:jobs, a:job_id)
+        return
+    endif
+    let l:job = s:jobs[a:job_id]
+
+    " take the output from the formatter and insert it into the file
+    let l:data = l:job.stdout
+    call s:UpdateFile(l:data)
+
+    unlet s:jobs[a:job_id]
+endfunction
+
+
+function! g:neoformat#KillAll() abort
+    if empty(s:jobs)
+        return
+    endif
+
+    for l:id in keys(s:jobs)
+        if l:id > 0
+            silent! call jobstop(l:id)
+        endif
+    endfor
+
+    let s:jobs = {}
+endfunction
+
+
+function! s:UpdateFile(data) abort
+    " setline() is used instead of writefile() so that marks, jumps, etc. are kept
+    call setline(1, a:data)
+    echom 'Neoformat: formatted file'
+endfunction
+
+function! s:genCmd(definition) abort
+
+  if has_key(a:definition, 'exe')
+        let l:cmd = get(a:definition, 'exe')
+    else
+        echoerr 'Neoformat: exe was not found in formatter definition'
+        return ""
+    endif
+
+    if has_key(a:definition, 'flags')
+        let l:flags = get(a:definition, 'flags')
+    else
+        " default stdin is disabled
+        let l:flags = []
+    endif
+
+    if has_key(a:definition, 'noappend')
+        let l:noappend = get(a:definition, 'noappend')
+    else
+        " default to appending filename
+        let l:noappend = 0
+    endif
+
+    "/Users/sloth/documents/example.vim
+    let l:fullfilepath = fnameescape(expand('%:p'))
+
+    if l:noappend
+        let s:path = ''
+    else
+        let s:path = l:fullfilepath
+    endif
+
+    " make sure there aren't any double spaces in the cmd
+    let l:_fullcmd = l:cmd . ' ' . join(l:flags) . ' ' . s:path
+    let l:fullcmd = join(split(l:_fullcmd))
+
+    return l:fullcmd
+endfunction
+
+
+function! s:BasicFormat() abort
+    if !exists('g:neoformat_basic_format')
+        let g:neoformat_basic_format = 0
+    endif
+    if g:neoformat_basic_format
+        echomsg 'Neoformat: using basic formatter'
+        execute "normal gg=G"
+    else
+        echomsg 'Neoformat: no formatters found for the current filetype'
+    endif
+endfunction
+
+
+function! g:neoformat#Neoformat(start) abort
+    " start argument is used for selecting different formatters
+    " usually after the first one fails
+    if !exists('a:start')
+        let l:index = 0
+    else
+        let l:index = a:start
+    endif
+
+    let s:formatters_cur = l:index
+
+    let l:filetype = &filetype
+
+    " Check for formatters for the current filetype
+    " check user defined formatters
+    if exists('g:neoformat_enabled_' . l:filetype)
+
+        let l:formatters = g:neoformat_enabled_{l:filetype}
+
+        if get(l:formatters, l:index, -1) != -1
+            let l:formatter = l:formatters[l:index]
+        else
+            echoerr 'Neoformat: no formatter found at list index ' . l:index
+            return
+        endif
+
+        let l:definition = g:neoformat_{l:filetype}_{l:formatter}
+
+    " check for default formatters
+    elseif exists('g:neoformat#enabled#' . l:filetype)
+
+        let l:formatters = g:neoformat#enabled#{l:filetype}
+
+        if get(l:formatters, l:index, -1) != -1
+            let l:formatter = l:formatters[l:index]
+        else
+            echoerr 'Neoformat: no formatter found at list index ' . l:index
+            return
+        endif
+
+        let l:definition = g:neoformat#{l:filetype}#{l:formatter}
+
+    else
+        call s:BasicFormat()
+
+        return
+    endif
+
+    let l:cmd = s:genCmd(l:definition)
+    if l:cmd == ""
+        echoerr 'Neoformat: error creating cmd'
+        return
+    endif
+
+    call g:neoformat#NeoformatRun(l:cmd)
+endfunction
+
+
