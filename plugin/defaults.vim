@@ -32,3 +32,11 @@ let g:neoformat#go#goimports = {
             \ }
 
 let g:neoformat#enabled#go = ['goimports', 'gofmt']
+
+" Ruby
+let g:neoformat#ruby#rubybeautify = {
+            \ 'exe': 'ruby-beautify',
+            \ 'flags': ['--spaces', '-c 2']
+            \ }
+
+let g:neoformat#enabled#ruby = ['rubybeautify']

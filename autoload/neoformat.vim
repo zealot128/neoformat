@@ -143,6 +143,11 @@ endfunction
 
 
 function! g:neoformat#Neoformat(start) abort
+    if !has('nvim')
+        echom 'Neoformat: Neovim is currently required to run this plugin'
+        return
+    endif
+
     " start argument is used for selecting different formatters
     " usually after the first one fails
     if !exists('a:start')
@@ -198,5 +203,3 @@ function! g:neoformat#Neoformat(start) abort
 
     call g:neoformat#NeoformatRun(l:cmd)
 endfunction
-
-
