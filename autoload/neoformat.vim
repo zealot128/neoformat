@@ -22,7 +22,7 @@ function! g:neoformat#NeoformatRun(cmd) abort
     try
         let l:id = jobstart(l:cmd, l:job)
     catch
-        echom "Neoformat: trying next formatter"
+        echom 'Neoformat: trying next formatter'
         call g:neoformat#Neoformat(s:formatters_cur + 1)
         return
     endtry
@@ -95,7 +95,7 @@ function! s:genCmd(definition) abort
         let l:cmd = get(a:definition, 'exe')
     else
         echoerr 'Neoformat: exe was not found in formatter definition'
-        return ""
+        return ''
     endif
 
     if has_key(a:definition, 'flags')
@@ -130,14 +130,38 @@ endfunction
 
 
 function! s:BasicFormat() abort
-    if !exists('g:neoformat_basic_format')
-        let g:neoformat_basic_format = 0
+    echomsg 'Neoformat: no formatters found for the current filetype'
+
+    if !exists('g:neoformat_basic_format_align')
+        let g:neoformat_basic_format_align = 0
     endif
-    if g:neoformat_basic_format
-        echomsg 'Neoformat: using basic formatter'
-        execute "normal gg=G"
-    else
-        echomsg 'Neoformat: no formatters found for the current filetype'
+
+   if !exists('g:neoformat_basic_format_retab')
+        let g:neoformat_basic_format_retab = 0
+   endif
+
+   if !exists('g:neoformat_basic_format_trim')
+        let g:neoformat_basic_format_trim = 0
+   endif
+
+    if g:neoformat_basic_format_align
+        echomsg 'Neoformat: aligning with basic formatter'
+        execute 'normal gg=G'
+    endif
+    if g:neoformat_basic_format_retab
+        echomsg 'Neoformat: converting tabs with basic formatter'
+        retab
+    endif
+    if g:neoformat_basic_format_trim
+        echomsg 'Neoformat: trimming whitespace with basic formatter'
+        " http://stackoverflow.com/q/356126
+        let l:search = @/
+        let l:view = winsaveview()
+        " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
+        %s/\s\+$//e
+        " vint: +ProhibitCommandRelyOnUser +ProhibitCommandWithUnintendedSideEffect
+        let @/=l:search
+        call winrestview(l:view)
     endif
 endfunction
 
@@ -196,7 +220,7 @@ function! g:neoformat#Neoformat(start) abort
     endif
 
     let l:cmd = s:genCmd(l:definition)
-    if l:cmd == ""
+    if l:cmd ==# ''
         echoerr 'Neoformat: error creating cmd'
         return
     endif

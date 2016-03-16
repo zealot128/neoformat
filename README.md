@@ -15,7 +15,32 @@ In order to preserve marks, jumps, etc., Neoformat uses the `setline()` function
 input the formatted text. If the buffer is changed before the formatter has completed,
 then the updated text will be put into the current buffer.
 
-So don't switch buffers while formatting!
+**So don't switch buffers while formatting!**
+
+## Config
+
+Define custom formatters.
+
+```vimscript
+let g:neoformat_python_autopep8 = {
+            \ 'exe': 'autopep8'
+            \ }
+
+let g:neoformat_enabled_python = ['autopep8']
+```
+
+Enable basic formatting when a filetype is not found. Disabled by default.
+
+```vimscript
+" Enable alignment
+let g:neoformat_basic_format_align = 1
+
+" Enable tab to spaces conversion
+let g:neoformat_basic_format_retab = 1
+
+" Enable trimmming of trailing whitespace
+let g:neoformat_basic_format_trim = 1
+```
 
 ## Supported Filetypes
 
@@ -27,3 +52,5 @@ So don't switch buffers while formatting!
   - [gofmt](https://golang.org/cmd/gofmt/), [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
 - ruby
   - [ruby-beautify](https://github.com/erniebrodeur/ruby-beautify)
+- java
+  - [uncrustify](http://uncrustify.sourceforge.net)

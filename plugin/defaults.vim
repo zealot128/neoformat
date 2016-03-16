@@ -33,6 +33,7 @@ let g:neoformat#go#goimports = {
 
 let g:neoformat#enabled#go = ['goimports', 'gofmt']
 
+
 " Ruby
 let g:neoformat#ruby#rubybeautify = {
             \ 'exe': 'ruby-beautify',
@@ -40,3 +41,12 @@ let g:neoformat#ruby#rubybeautify = {
             \ }
 
 let g:neoformat#enabled#ruby = ['rubybeautify']
+
+
+" Java
+let g:neoformat#java#uncrustify = {
+            \ 'exe': 'uncrustify',
+            \ 'flags': ['-q -f']
+            \ }
+
+let g:neoformat#enabled#java = ['uncrustify']
