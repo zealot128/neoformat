@@ -9,13 +9,15 @@ formatter defined for the filetype.
 
 The job control is based off of [vim-go's](https://github.com/fatih/vim-go).
 
-## Current Issues
+## Current Limitation(s)
 
-In order to preserve marks, jumps, etc., Neoformat uses the `setline()` function in Vim to
-input the formatted text. If the buffer is changed before the formatter has completed,
-then the updated text will be put into the current buffer.
+In order to preserve marks, jumps, etc., Neoformat uses Vim's `setline()` function
+to insert the formatted text. If the buffer is changed before the formatter has
+completed, then the updated text will be put into the current buffer.
 
-**So don't switch buffers while formatting!**
+To prevent this, jobs are cancelled when changing / closing the buffer.
+
+**So don't switch buffers before the the formatting is complete!**
 
 ## Config
 
@@ -44,13 +46,23 @@ let g:neoformat_basic_format_trim = 1
 
 ## Supported Filetypes
 
-- javascript
-  - [jsbeautify](https://github.com/beautify-web/js-beautify)
-- python
-  - [autopep8](https://github.com/hhatto/autopep8)
-- go
+- CSS
+  - [css-beautify](https://github.com/senchalabs/cssbeautify)
+- Go
   - [gofmt](https://golang.org/cmd/gofmt/), [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
-- ruby
-  - [ruby-beautify](https://github.com/erniebrodeur/ruby-beautify)
-- java
+- HTML
+  - [html-beautify](https://github.com/beautify-web/js-beautify#css--html)
+- Java
   - [uncrustify](http://uncrustify.sourceforge.net)
+- Javascript
+  - [js-beautify](https://github.com/beautify-web/js-beautify)
+- Json
+  - [js-beautify](https://github.com/beautify-web/js-beautify)
+- Python
+  - [autopep8](https://github.com/hhatto/autopep8)
+- Ruby
+  - [ruby-beautify](https://github.com/erniebrodeur/ruby-beautify)
+- SASS
+  - [sass-convert](http://sass-lang.com/documentation/#executables)
+- SCSS
+  - [sass-convert](http://sass-lang.com/documentation/#executables)

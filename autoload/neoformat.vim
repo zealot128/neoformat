@@ -91,10 +91,14 @@ endfunction
 
 function! s:genCmd(definition) abort
 
-  if has_key(a:definition, 'exe')
+    if has_key(a:definition, 'exe')
         let l:cmd = get(a:definition, 'exe')
+        if !executable(l:cmd)
+            echom 'Neoformat: executable ' . l:cmd . ' not found'
+            return ''
+        endif
     else
-        echoerr 'Neoformat: exe was not found in formatter definition'
+        echom 'Neoformat: exe was not found in formatter definition'
         return ''
     endif
 
@@ -130,7 +134,7 @@ endfunction
 
 
 function! s:BasicFormat() abort
-    echomsg 'Neoformat: no formatters found for the current filetype'
+    echom 'Neoformat: no formatters found for the current filetype'
 
     if !exists('g:neoformat_basic_format_align')
         let g:neoformat_basic_format_align = 0
@@ -145,15 +149,15 @@ function! s:BasicFormat() abort
    endif
 
     if g:neoformat_basic_format_align
-        echomsg 'Neoformat: aligning with basic formatter'
+        echom 'Neoformat: aligning with basic formatter'
         execute 'normal gg=G'
     endif
     if g:neoformat_basic_format_retab
-        echomsg 'Neoformat: converting tabs with basic formatter'
+        echom 'Neoformat: converting tabs with basic formatter'
         retab
     endif
     if g:neoformat_basic_format_trim
-        echomsg 'Neoformat: trimming whitespace with basic formatter'
+        echom 'Neoformat: trimming whitespace with basic formatter'
         " http://stackoverflow.com/q/356126
         let l:search = @/
         let l:view = winsaveview()
@@ -193,7 +197,7 @@ function! g:neoformat#Neoformat(start) abort
         if get(l:formatters, l:index, -1) != -1
             let l:formatter = l:formatters[l:index]
         else
-            echoerr 'Neoformat: no formatter found at list index ' . l:index
+            echom 'Neoformat: no formatter found at list index ' . l:index
             return
         endif
 
@@ -207,7 +211,7 @@ function! g:neoformat#Neoformat(start) abort
         if get(l:formatters, l:index, -1) != -1
             let l:formatter = l:formatters[l:index]
         else
-            echoerr 'Neoformat: no formatter found at list index ' . l:index
+            echom 'Neoformat: no formatter found at list index ' . l:index
             return
         endif
 
@@ -221,7 +225,7 @@ function! g:neoformat#Neoformat(start) abort
 
     let l:cmd = s:genCmd(l:definition)
     if l:cmd ==# ''
-        echoerr 'Neoformat: error creating cmd'
+        echom 'Neoformat: error creating cmd'
         return
     endif
 

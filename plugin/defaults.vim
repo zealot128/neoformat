@@ -22,6 +22,43 @@ let g:neoformat#javascript#jsbeautify = {
 let g:neoformat#enabled#javascript = ['jsbeautify']
 
 
+" JSON
+let g:neoformat#json#jsbeautify = {
+            \ 'exe': 'js-beautify'
+            \ }
+
+let g:neoformat#enabled#json = ['jsbeautify']
+
+" HTML
+let g:neoformat#html#htmlbeautify = {
+            \ 'exe': 'html-beautify'
+            \ }
+
+let g:neoformat#enabled#html = ['htmlbeautify']
+
+" CSS
+let g:neoformat#css#cssbeautify = {
+            \ 'exe': 'css-beautify'
+            \ }
+
+let g:neoformat#enabled#css = ['cssbeautify']
+
+" SCSS
+let g:neoformat#scss#sassconvert = {
+            \ 'exe': 'sass-convert',
+            \ 'flags': ['-T scss']
+            \ }
+
+let g:neoformat#enabled#scss = ['sassconvert']
+
+" SASS
+let g:neoformat#sass#sassconvert = {
+            \ 'exe': 'sass-convert',
+            \ 'flags': ['-T sass']
+            \ }
+
+let g:neoformat#enabled#sass = ['sassconvert']
+
 " Go
 let g:neoformat#go#gofmt = {
             \ 'exe': 'goimport'
@@ -46,7 +83,7 @@ let g:neoformat#enabled#ruby = ['rubybeautify']
 " Java
 let g:neoformat#java#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q -f']
+            \ 'flags': ['-q', '-f']
             \ }
 
 let g:neoformat#enabled#java = ['uncrustify']
