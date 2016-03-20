@@ -87,3 +87,11 @@ let g:neoformat#java#uncrustify = {
             \ }
 
 let g:neoformat#enabled#java = ['uncrustify']
+
+" Markdown
+let g:neoformat#markdown#remark = {
+            \ 'exe': 'remark',
+            \ 'flags': ['--no-color', '--silent']
+            \ }
+
+let g:neoformat#enabled#markdown = ['remark']

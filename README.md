@@ -3,7 +3,7 @@
 A [Neovim](https://neovim.io) plugin for formatting code.
 
 Neoformat uses a variety of formatters for differing filetypes. Currently, Neoformat
-will run a formatter *asynchronously*, and on success it will update the current
+will run a formatter _asynchronously_, and on success it will update the current
 buffer with the formatted text. On a formatter failure, Neoformat will try the next
 formatter defined for the filetype.
 
@@ -56,8 +56,10 @@ let g:neoformat_basic_format_trim = 1
   - [uncrustify](http://uncrustify.sourceforge.net)
 - Javascript
   - [js-beautify](https://github.com/beautify-web/js-beautify)
-- Json
+- JSON
   - [js-beautify](https://github.com/beautify-web/js-beautify)
+- Markdown
+  - [remark](https://github.com/wooorm/remark)
 - Python
   - [autopep8](https://github.com/hhatto/autopep8)
 - Ruby

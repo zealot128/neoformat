@@ -85,6 +85,14 @@ endfunction
 
 function! s:UpdateFile(data) abort
     " setline() is used instead of writefile() so that marks, jumps, etc. are kept
+    let l:last = len(a:data)-1
+    let l:ending = a:data[l:last]
+    " remove extra newlines at the end of files because they are unnecessary
+    let l:pat = '\n | \r | \n\r'
+    if match(l:last, l:pat)
+        call remove(a:data, l:last)
+    end
+
     call setline(1, a:data)
     echom 'Neoformat: formatted file'
 endfunction
