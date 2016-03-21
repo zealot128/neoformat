@@ -95,3 +95,11 @@ let g:neoformat#markdown#remark = {
             \ }
 
 let g:neoformat#enabled#markdown = ['remark']
+
+" SQL
+let g:neoformat#sql#sqlformat = {
+            \ 'exe': 'sqlformat',
+            \ 'flags': ['--reindent']
+            \ }
+
+let g:neoformat#enabled#sql = ['sqlformat']

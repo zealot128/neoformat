@@ -33,7 +33,7 @@ To prevent this, format jobs are cancelled when changing / closing the buffer.
 
 **So don't switch buffers before the the formatting is complete!**
 
-## Config
+## Config [Optional]
 
 Define custom formatters.
 
@@ -82,3 +82,5 @@ let g:neoformat_basic_format_trim = 1
   - [sass-convert](http://sass-lang.com/documentation/#executables)
 - SCSS
   - [sass-convert](http://sass-lang.com/documentation/#executables)
+- SQL
+  - [sqlformat](https://github.com/andialbrecht/sqlparse) ships with sqlparse
