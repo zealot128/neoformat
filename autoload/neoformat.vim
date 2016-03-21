@@ -102,6 +102,7 @@ function! s:UpdateFile(data) abort
     echom 'Neoformat: formatted file'
 endfunction
 
+
 function! s:genCmd(definition) abort
 
     if has_key(a:definition, 'exe')
@@ -183,7 +184,7 @@ function! s:BasicFormat() abort
 endfunction
 
 
-function! g:neoformat#Neoformat(start) abort
+function! g:neoformat#Neoformat(start, filetype) abort
     if !has('nvim')
         echom 'Neoformat: Neovim is currently required to run this plugin'
         return
@@ -191,15 +192,11 @@ function! g:neoformat#Neoformat(start) abort
 
     " start argument is used for selecting different formatters
     " usually after the first one fails
-    if !exists('a:start')
-        let l:index = 0
-    else
-        let l:index = a:start
-    endif
+    let l:index = a:start !=? '' ? a:start : 0
+
+    let l:filetype = a:filetype !=? '' ? a:filetype : &filetype
 
     let s:formatters_cur = l:index
-
-    let l:filetype = &filetype
 
     " Check for formatters for the current filetype
     " check user defined formatters

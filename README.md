@@ -9,13 +9,27 @@ formatter defined for the filetype.
 
 The job control is based off of [vim-go's](https://github.com/fatih/vim-go).
 
+## Basic Usage
+
+Format the current file using its filetype
+
+```vimscript
+:Neoformat
+```
+
+Or specify a filetype
+
+```vimscript
+:Neoformat python
+```
+
 ## Current Limitation(s)
 
 In order to preserve marks, jumps, etc., Neoformat uses Vim's `setline()` function
 to insert the formatted text. If the buffer is changed before the formatter has
 completed, then the updated text will be put into the current buffer.
 
-To prevent this, jobs are cancelled when changing / closing the buffer.
+To prevent this, format jobs are cancelled when changing / closing the buffer.
 
 **So don't switch buffers before the the formatting is complete!**
 
