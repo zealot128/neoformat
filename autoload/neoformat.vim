@@ -84,6 +84,10 @@ endfunction
 
 
 function! s:UpdateFile(data) abort
+    if len(a:data) < 1
+        echom 'Neoformat: no data was provided by formatter program'
+        return
+    endif
     let l:last = len(a:data)-1
     let l:ending = a:data[l:last]
     " remove extra newlines at the end of files because they are unnecessary

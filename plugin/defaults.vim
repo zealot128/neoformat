@@ -137,12 +137,16 @@ let g:neoformat#objc#uncrustify = {
 let g:neoformat#enabled#objc = ['uncrustify']
 
 " D
+let g:neoformat#d#dfmt = {
+            \ 'exe': 'dfmt'
+            \ }
+
 let g:neoformat#d#uncrustify = {
             \ 'exe': 'uncrustify',
             \ 'flags': ['-q', '-f']
             \ }
 
-let g:neoformat#enabled#d = ['uncrustify']
+let g:neoformat#enabled#d = ['uncrustify', 'dfmt']
 
 " Pawn
 let g:neoformat#pawn#uncrustify = {
@@ -159,3 +163,24 @@ let g:neoformat#vala#uncrustify = {
             \ }
 
 let g:neoformat#enabled#vala = ['uncrustify']
+
+" Elm
+let g:neoformat#elm#elmformat = {
+            \ 'exe': 'elm-format'
+            \ }
+
+let g:neoformat#enabled#elm = ['elmformat']
+
+" Haskell
+let g:neoformat#haskell#stylishhaskell = {
+            \ 'exe': 'stylish-haskell'
+            \ }
+
+let g:neoformat#enabled#haskell = ['stylishhaskell']
+
+" Typescript
+let g:neoformat#typescript#tsfmt = {
+            \ 'exe': 'tsfmt'
+            \ }
+
+let g:neoformat#enabled#typescript = ['tsfmt']

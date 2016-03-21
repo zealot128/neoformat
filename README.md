@@ -69,9 +69,13 @@ let g:neoformat_basic_format_trim = 1
 - CSS
   - [css-beautify](https://github.com/senchalabs/cssbeautify)
 - D
-  - [uncrustify](http://uncrustify.sourceforge.net)
+  - [uncrustify](http://uncrustify.sourceforge.net), [dfmt](https://github.com/Hackerpilot/dfmt)
+- Elm
+  - [elm-format](https://github.com/avh4/elm-format)
 - Go
   - [gofmt](https://golang.org/cmd/gofmt/), [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
+- Haskell
+  - [stylish-haskell](https://github.com/jaspervdj/stylish-haskell)
 - HTML
   - [html-beautify](https://github.com/beautify-web/js-beautify#css--html)
 - Java
@@ -96,5 +100,7 @@ let g:neoformat_basic_format_trim = 1
   - [sass-convert](http://sass-lang.com/documentation/#executables)
 - SQL
   - sqlformat (ships with [sqlparse](https://github.com/andialbrecht/sqlparse))
+- Typescript
+  - [tsfmt](https://github.com/vvakame/typescript-formatter)
 - VALA
   - [uncrustify](http://uncrustify.sourceforge.net)
