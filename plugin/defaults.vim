@@ -103,3 +103,59 @@ let g:neoformat#sql#sqlformat = {
             \ }
 
 let g:neoformat#enabled#sql = ['sqlformat']
+
+" C
+let g:neoformat#c#uncrustify = {
+            \ 'exe': 'uncrustify',
+            \ 'flags': ['-q', '-f']
+            \ }
+
+let g:neoformat#enabled#c = ['uncrustify']
+
+" C++
+let g:neoformat#cpp#uncrustify = {
+            \ 'exe': 'uncrustify',
+            \ 'flags': ['-q', '-f']
+            \ }
+
+let g:neoformat#enabled#cpp = ['uncrustify']
+
+" C#
+let g:neoformat#csharp#uncrustify = {
+            \ 'exe': 'uncrustify',
+            \ 'flags': ['-q', '-f']
+            \ }
+
+let g:neoformat#enabled#csharp = ['uncrustify']
+
+" Objective-C
+let g:neoformat#objc#uncrustify = {
+            \ 'exe': 'uncrustify',
+            \ 'flags': ['-q', '-f']
+            \ }
+
+let g:neoformat#enabled#objc = ['uncrustify']
+
+" D
+let g:neoformat#d#uncrustify = {
+            \ 'exe': 'uncrustify',
+            \ 'flags': ['-q', '-f']
+            \ }
+
+let g:neoformat#enabled#d = ['uncrustify']
+
+" Pawn
+let g:neoformat#pawn#uncrustify = {
+            \ 'exe': 'uncrustify',
+            \ 'flags': ['-q', '-f']
+            \ }
+
+let g:neoformat#enabled#pawn = ['uncrustify']
+
+" VALA
+let g:neoformat#vala#uncrustify = {
+            \ 'exe': 'uncrustify',
+            \ 'flags': ['-q', '-f']
+            \ }
+
+let g:neoformat#enabled#vala = ['uncrustify']

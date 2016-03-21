@@ -60,8 +60,16 @@ let g:neoformat_basic_format_trim = 1
 
 ## Supported Filetypes
 
+- C
+  - [uncrustify](http://uncrustify.sourceforge.net)
+- C#
+  - [uncrustify](http://uncrustify.sourceforge.net)
+- C++
+  - [uncrustify](http://uncrustify.sourceforge.net)
 - CSS
   - [css-beautify](https://github.com/senchalabs/cssbeautify)
+- D
+  - [uncrustify](http://uncrustify.sourceforge.net)
 - Go
   - [gofmt](https://golang.org/cmd/gofmt/), [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
 - HTML
@@ -74,6 +82,10 @@ let g:neoformat_basic_format_trim = 1
   - [js-beautify](https://github.com/beautify-web/js-beautify)
 - Markdown
   - [remark](https://github.com/wooorm/remark)
+- Objective-C
+  - [uncrustify](http://uncrustify.sourceforge.net)
+- Pawn
+  - [uncrustify](http://uncrustify.sourceforge.net)
 - Python
   - [autopep8](https://github.com/hhatto/autopep8)
 - Ruby
@@ -83,4 +95,6 @@ let g:neoformat_basic_format_trim = 1
 - SCSS
   - [sass-convert](http://sass-lang.com/documentation/#executables)
 - SQL
-  - [sqlformat](https://github.com/andialbrecht/sqlparse) ships with sqlparse
+  - sqlformat (ships with [sqlparse](https://github.com/andialbrecht/sqlparse))
+- VALA
+  - [uncrustify](http://uncrustify.sourceforge.net)
