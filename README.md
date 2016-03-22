@@ -13,13 +13,13 @@ The job control is based off of [vim-go's](https://github.com/fatih/vim-go).
 
 Format the current file using its filetype
 
-```vimscript
+```viml
 :Neoformat
 ```
 
 Or specify a filetype
 
-```vimscript
+```viml
 :Neoformat python
 ```
 
@@ -37,7 +37,7 @@ To prevent this, format jobs are cancelled when changing / closing the buffer.
 
 Define custom formatters.
 
-```vimscript
+```viml
 let g:neoformat_python_autopep8 = {
             \ 'exe': 'autopep8'
             \ }
@@ -47,7 +47,7 @@ let g:neoformat_enabled_python = ['autopep8']
 
 Enable basic formatting when a filetype is not found. Disabled by default.
 
-```vimscript
+```viml
 " Enable alignment
 let g:neoformat_basic_format_align = 1
 
@@ -78,6 +78,8 @@ let g:neoformat_basic_format_trim = 1
   - [stylish-haskell](https://github.com/jaspervdj/stylish-haskell)
 - HTML
   - [html-beautify](https://github.com/beautify-web/js-beautify#css--html)
+- Jade
+  - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
 - Java
   - [uncrustify](http://uncrustify.sourceforge.net)
 - Javascript
@@ -90,8 +92,10 @@ let g:neoformat_basic_format_trim = 1
   - [uncrustify](http://uncrustify.sourceforge.net)
 - Pawn
   - [uncrustify](http://uncrustify.sourceforge.net)
+- Pug (formally Jade)
+  - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
 - Python
-  - [autopep8](https://github.com/hhatto/autopep8)
+  - [yapf](https://github.com/google/yapf), [autopep8](https://github.com/hhatto/autopep8)
 - Ruby
   - [ruby-beautify](https://github.com/erniebrodeur/ruby-beautify)
 - SASS

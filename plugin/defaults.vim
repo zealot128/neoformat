@@ -7,11 +7,15 @@ let s:fullfilename = shellescape(expand('%'))
 
 
 " Python
+let g:neoformat#python#yapf = {
+            \ 'exe': 'yapf'
+            \ }
+
 let g:neoformat#python#autopep8 = {
             \ 'exe': 'autopep8'
             \ }
 
-let g:neoformat#enabled#python = ['autopep8']
+let g:neoformat#enabled#python = ['yapf', 'autopep8']
 
 
 " Javascript
@@ -184,3 +188,17 @@ let g:neoformat#typescript#tsfmt = {
             \ }
 
 let g:neoformat#enabled#typescript = ['tsfmt']
+
+" Pug
+let g:neoformat#pug#pugbeautifier = {
+            \ 'exe': 'pug-beautifier'
+            \ }
+
+let g:neoformat#enabled#pug = ['pug-beautifier']
+
+" Jade
+let g:neoformat#jade#pugbeautifier = {
+            \ 'exe': 'pug-beautifier'
+            \ }
+
+let g:neoformat#enabled#jade = ['pug-beautifier']

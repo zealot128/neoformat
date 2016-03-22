@@ -88,16 +88,28 @@ function! s:UpdateFile(data) abort
         echom 'Neoformat: no data was provided by formatter program'
         return
     endif
+
+    let l:sizedata = len(a:data)
+    let l:sizefile = line('$')
+
+    " cleanup the end of the file
+    while l:sizedata <= l:sizefile
+        call setline(l:sizedata, '')
+        let l:sizedata += 1
+    endwhile
+    call s:TrimTrailingNewLines()
+
     let l:last = len(a:data)-1
     let l:ending = a:data[l:last]
-    " remove extra newlines at the end of files because they are unnecessary
+    " remove extra newlines at the end of formatted file data
     if l:ending ==# ''
         call remove(a:data, l:last)
     endif
 
+    " ensure file needs to be changed
     let l:lines = getbufline(bufnr('%'), 1, '$')
     if a:data ==# l:lines
-        echom 'Neoformat: file unchanged'
+        echom 'Neoformat: no change necessary'
         return
     endif
 
@@ -158,13 +170,13 @@ function! s:BasicFormat() abort
         let g:neoformat_basic_format_align = 0
     endif
 
-   if !exists('g:neoformat_basic_format_retab')
+    if !exists('g:neoformat_basic_format_retab')
         let g:neoformat_basic_format_retab = 0
-   endif
+    endif
 
-   if !exists('g:neoformat_basic_format_trim')
+    if !exists('g:neoformat_basic_format_trim')
         let g:neoformat_basic_format_trim = 0
-   endif
+    endif
 
     if g:neoformat_basic_format_align
         echom 'Neoformat: aligning with basic formatter'
@@ -187,6 +199,16 @@ function! s:BasicFormat() abort
     endif
 endfunction
 
+function! s:TrimTrailingNewLines() abort
+    let l:search = @/
+    let l:view = winsaveview()
+    " http://stackoverflow.com/a/7496112/3720597
+    " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
+    silent! %s#\($\n\)\+\%$##
+    " vint: +ProhibitCommandRelyOnUser +ProhibitCommandWithUnintendedSideEffect
+    let @/=l:search
+    call winrestview(l:view)
+endfunction
 
 function! g:neoformat#Neoformat(start, filetype) abort
     if !has('nvim')
