@@ -67,7 +67,7 @@ let g:neoformat_basic_format_trim = 1
 - C++
   - [uncrustify](http://uncrustify.sourceforge.net)
 - CSS
-  - [css-beautify](https://github.com/senchalabs/cssbeautify)
+  - css-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
 - D
   - [uncrustify](http://uncrustify.sourceforge.net), [dfmt](https://github.com/Hackerpilot/dfmt)
 - Elm
@@ -77,7 +77,7 @@ let g:neoformat_basic_format_trim = 1
 - Haskell
   - [stylish-haskell](https://github.com/jaspervdj/stylish-haskell)
 - HTML
-  - [html-beautify](https://github.com/beautify-web/js-beautify#css--html)
+  - html-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
 - Jade
   - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
 - Java
