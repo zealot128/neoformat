@@ -225,3 +225,11 @@ let g:neoformat#xhtml#tidy = {
             \ }
 
 let g:neoformat#enabled#xhtml = ['tidy']
+
+" Perl
+let g:neoformat#perl#perltidy = {
+            \ 'exe': 'perltidy',
+            \ 'flags': ['--standard-output']
+            \ }
+
+let g:neoformat#enabled#perl = ['perltidy']

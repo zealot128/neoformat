@@ -92,6 +92,8 @@ let g:neoformat_basic_format_trim = 1
   - [uncrustify](http://uncrustify.sourceforge.net)
 - Pawn
   - [uncrustify](http://uncrustify.sourceforge.net)
+- Perl
+  - [perltidy](http://perltidy.sourceforge.net)
 - Pug (formally Jade)
   - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
 - Python
