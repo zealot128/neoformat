@@ -37,8 +37,13 @@ let g:neoformat#enabled#json = ['jsbeautify']
 let g:neoformat#html#htmlbeautify = {
             \ 'exe': 'html-beautify'
             \ }
+let g:neoformat#html#tidy = {
+            \ 'exe': 'tidy',
+            \ 'flags': ['-quiet', '--indent auto', '--indent-spaces 4',
+            \           '--vertical-space yes', '--tidy-mark no']
+            \ }
 
-let g:neoformat#enabled#html = ['htmlbeautify']
+let g:neoformat#enabled#html = ['htmlbeautify', 'tidy']
 
 " CSS
 let g:neoformat#css#cssbeautify = {
@@ -202,3 +207,21 @@ let g:neoformat#jade#pugbeautifier = {
             \ }
 
 let g:neoformat#enabled#jade = ['pugbeautifier']
+
+" XML
+let g:neoformat#xml#tidy = {
+            \ 'exe': 'tidy',
+            \ 'flags': ['-quiet', '-xml', '--indent auto', '--indent-spaces 4',
+            \           '--vertical-space yes', '--tidy-mark no']
+            \ }
+
+let g:neoformat#enabled#xml = ['tidy']
+
+" XHTML
+let g:neoformat#xhtml#tidy = {
+            \ 'exe': 'tidy',
+            \ 'flags': ['-quiet', '-asxhtml', '--indent auto', '--indent-spaces 4',
+            \           '--vertical-space yes', '--tidy-mark no']
+            \ }
+
+let g:neoformat#enabled#xhtml = ['tidy']

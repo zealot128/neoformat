@@ -108,3 +108,7 @@ let g:neoformat_basic_format_trim = 1
   - [tsfmt](https://github.com/vvakame/typescript-formatter)
 - VALA
   - [uncrustify](http://uncrustify.sourceforge.net)
+- XHTML
+  - [tidy](http://www.html-tidy.org)
+- XML
+  - [tidy](http://www.html-tidy.org)

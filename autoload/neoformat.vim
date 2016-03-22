@@ -30,7 +30,6 @@ function! g:neoformat#NeoformatRun(cmd) abort
     let l:job.id = l:id
 
     let s:jobs[l:id] = l:job
-    return l:id
 endfunction
 
 
