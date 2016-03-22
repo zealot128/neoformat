@@ -125,12 +125,12 @@ let g:neoformat#cpp#uncrustify = {
 let g:neoformat#enabled#cpp = ['uncrustify']
 
 " C#
-let g:neoformat#csharp#uncrustify = {
+let g:neoformat#cs#uncrustify = {
             \ 'exe': 'uncrustify',
             \ 'flags': ['-q', '-f']
             \ }
 
-let g:neoformat#enabled#csharp = ['uncrustify']
+let g:neoformat#enabled#cs = ['uncrustify']
 
 " Objective-C
 let g:neoformat#objc#uncrustify = {
@@ -194,11 +194,11 @@ let g:neoformat#pug#pugbeautifier = {
             \ 'exe': 'pug-beautifier'
             \ }
 
-let g:neoformat#enabled#pug = ['pug-beautifier']
+let g:neoformat#enabled#pug = ['pugbeautifier']
 
 " Jade
 let g:neoformat#jade#pugbeautifier = {
             \ 'exe': 'pug-beautifier'
             \ }
 
-let g:neoformat#enabled#jade = ['pug-beautifier']
+let g:neoformat#enabled#jade = ['pugbeautifier']
