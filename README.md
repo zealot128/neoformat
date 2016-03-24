@@ -60,6 +60,8 @@ let g:neoformat_basic_format_trim = 1
 
 ## Supported Filetypes
 
+- Arduino
+  - [uncrustify](http://uncrustify.sourceforge.net)
 - C
   - [uncrustify](http://uncrustify.sourceforge.net)
 - C#

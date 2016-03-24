@@ -92,7 +92,7 @@ let g:neoformat#enabled#ruby = ['rubybeautify']
 " Java
 let g:neoformat#java#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-f']
+            \ 'flags': ['-q', '-l JAVA', '-f']
             \ }
 
 let g:neoformat#enabled#java = ['uncrustify']
@@ -116,7 +116,7 @@ let g:neoformat#enabled#sql = ['sqlformat']
 " C
 let g:neoformat#c#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-f']
+            \ 'flags': ['-q', '-l C', '-f']
             \ }
 
 let g:neoformat#enabled#c = ['uncrustify']
@@ -124,7 +124,7 @@ let g:neoformat#enabled#c = ['uncrustify']
 " C++
 let g:neoformat#cpp#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-f']
+            \ 'flags': ['-q', '-l CPP', '-f']
             \ }
 
 let g:neoformat#enabled#cpp = ['uncrustify']
@@ -132,7 +132,7 @@ let g:neoformat#enabled#cpp = ['uncrustify']
 " C#
 let g:neoformat#cs#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-f']
+            \ 'flags': ['-q', '-l CS', '-f']
             \ }
 
 let g:neoformat#enabled#cs = ['uncrustify']
@@ -140,7 +140,7 @@ let g:neoformat#enabled#cs = ['uncrustify']
 " Objective-C
 let g:neoformat#objc#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-f']
+            \ 'flags': ['-q', '-l OC+', '-f']
             \ }
 
 let g:neoformat#enabled#objc = ['uncrustify']
@@ -152,7 +152,7 @@ let g:neoformat#d#dfmt = {
 
 let g:neoformat#d#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-f']
+            \ 'flags': ['-q', '-l D', '-f']
             \ }
 
 let g:neoformat#enabled#d = ['uncrustify', 'dfmt']
@@ -160,7 +160,7 @@ let g:neoformat#enabled#d = ['uncrustify', 'dfmt']
 " Pawn
 let g:neoformat#pawn#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-f']
+            \ 'flags': ['-q', '-l PAWN', '-f']
             \ }
 
 let g:neoformat#enabled#pawn = ['uncrustify']
@@ -168,7 +168,7 @@ let g:neoformat#enabled#pawn = ['uncrustify']
 " VALA
 let g:neoformat#vala#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-f']
+            \ 'flags': ['-q', '-l VALA', '-f']
             \ }
 
 let g:neoformat#enabled#vala = ['uncrustify']
@@ -233,3 +233,11 @@ let g:neoformat#perl#perltidy = {
             \ }
 
 let g:neoformat#enabled#perl = ['perltidy']
+
+" Arduino
+let g:neoformat#arduino#uncrustify = {
+            \ 'exe': 'uncrustify',
+            \ 'flags': ['-q', '-l CPP', '-f']
+            \ }
+
+let g:neoformat#enabled#arduino = ['uncrustify']
