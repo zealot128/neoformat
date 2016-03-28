@@ -17,10 +17,16 @@ Format the current file using its filetype
 :Neoformat
 ```
 
-Or specify a filetype
+Specify a filetype
 
 ```viml
 :Neoformat python
+```
+
+Or specify a certain formatter
+
+```viml
+:Neoformat javascript/js-beautify
 ```
 
 ## Current Limitation(s)

@@ -198,6 +198,7 @@ function! s:BasicFormat() abort
     endif
 endfunction
 
+
 function! s:TrimTrailingNewLines() abort
     let l:search = @/
     let l:view = winsaveview()
@@ -209,7 +210,32 @@ function! s:TrimTrailingNewLines() abort
     call winrestview(l:view)
 endfunction
 
-function! g:neoformat#Neoformat(start, filetype) abort
+
+function! s:getFormatter(arg) abort
+    let l:s = split(a:arg, '/', 1)
+
+    if len(l:s) > 1
+        let l:formatter = l:s[1]
+        " need to remove all `-` since vim's variable definitions can't use
+        " them
+        return substitute(l:formatter, '-', '','g')
+    endif
+
+    return ''
+endfunction
+
+
+function! s:getFiletype(arg) abort
+    if a:arg ==# ''
+        return &filetype
+    endif
+    let l:s = split(a:arg, '/', 1)
+
+    return l:s[0]
+endfunction
+
+
+function! g:neoformat#Neoformat(start, userCMD) abort
     if !has('nvim')
         echom 'Neoformat: Neovim is currently required to run this plugin'
         return
@@ -219,17 +245,22 @@ function! g:neoformat#Neoformat(start, filetype) abort
     " usually after the first one fails
     let l:index = a:start !=? '' ? a:start : 0
 
-    let l:filetype = a:filetype !=? '' ? a:filetype : &filetype
+    let l:fmter = s:getFormatter(a:userCMD)
+
+    let l:filetype = s:getFiletype(a:userCMD)
 
     let s:formatters_cur = l:index
 
-    " Check for formatters for the current filetype
+    " Check the current filetype for formatters
     " check user defined formatters
     if exists('g:neoformat_enabled_' . l:filetype)
 
         let l:formatters = g:neoformat_enabled_{l:filetype}
 
-        if get(l:formatters, l:index, -1) != -1
+        " check for user specified formatter first
+        if l:fmter !=# ''
+            let l:formatter = l:fmter
+        elseif get(l:formatters, l:index, -1) != -1
             let l:formatter = l:formatters[l:index]
         else
             echom 'Neoformat: no formatter found at list index ' . l:index
@@ -243,7 +274,10 @@ function! g:neoformat#Neoformat(start, filetype) abort
 
         let l:formatters = g:neoformat#enabled#{l:filetype}
 
-        if get(l:formatters, l:index, -1) != -1
+        " check for user specified formatter first
+        if l:fmter !=# ''
+            let l:formatter = l:fmter
+        elseif get(l:formatters, l:index, -1) != -1
             let l:formatter = l:formatters[l:index]
         else
             echom 'Neoformat: no formatter found at list index ' . l:index
