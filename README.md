@@ -39,6 +39,9 @@ To prevent this, format jobs are cancelled when changing / closing the buffer.
 
 **So don't switch buffers before the the formatting is complete!**
 
+Also, Neoformat reads from the current file, not the current buffer, so save current
+changes before formatting.
+
 ## Config [Optional]
 
 Define custom formatters.
