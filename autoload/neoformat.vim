@@ -88,20 +88,27 @@ function! s:UpdateFile(data) abort
         return
     endif
 
-    let l:sizedata = len(a:data)
-    let l:sizefile = line('$')
+    let l:last = len(a:data)-1
+    let l:end = a:data[l:last]
+
+    " needed for some formatters that add empty new lines at the end of files
+    " ex: remark
+    if l:end ==# ''
+        let l:datalen = len(a:data)
+    else
+        let l:datalen = len(a:data) + 1
+    endif
 
     " cleanup the end of the file
-    while l:sizedata <= l:sizefile
-        call setline(l:sizedata, '')
-        let l:sizedata += 1
+    while l:datalen <= line('$')
+        call setline(l:datalen, '')
+        let l:datalen += 1
     endwhile
+
     call s:TrimTrailingNewLines()
 
-    let l:last = len(a:data)-1
-    let l:ending = a:data[l:last]
     " remove extra newlines at the end of formatted file data
-    if l:ending ==# ''
+    if l:end ==# ''
         call remove(a:data, l:last)
     endif
 
