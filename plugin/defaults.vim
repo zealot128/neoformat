@@ -1,11 +1,3 @@
-"/Users/sloth/documents/example.vim
-let s:fullfilepath = fnameescape(expand('%:p'))
-" example
-let s:basefilename = shellescape(expand('%:r'))
-" example.vim
-let s:fullfilename = shellescape(expand('%'))
-
-
 " Python
 let g:neoformat#python#yapf = {
             \ 'exe': 'yapf'
