@@ -29,6 +29,14 @@ Or specify a certain formatter
 :Neoformat javascript/js-beautify
 ```
 
+## Install
+
+[vim-plug](https://github.com/junegunn/vim-plug)
+
+```viml
+Plug 'sbdchd/neoformat'
+```
+
 ## Current Limitation(s)
 
 In order to preserve marks, jumps, etc., Neoformat uses Vim's `setline()` function
