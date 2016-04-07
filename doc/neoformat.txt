@@ -1,0 +1,105 @@
+*neoformat.txt*	A Neovim plugin for formatting.
+
+Version: 0.1
+
+CONTENTS					*neoformat-contents*
+
+Introduction		|neoformat-introduction|
+Install			    |neoformat-install|
+Usage			    |neoformat-usage|
+Supported Filetypes	|neoformat-supported-filetypes|
+
+==============================================================================
+INTRODUCTION					*neoformat-introduction*
+
+*neoformat* uses a variety of formatters for differing filetypes.
+Currently, *neoformat* will run a formatter asynchronously, and on success it
+will update the current buffer with the formatted text. On a formatter failure,
+*neoformat* will try the next formatter defined for the filetype.
+
+The job control is based off of vim-go's.
+
+==============================================================================
+INSTALL						*neoformat-install*
+
+Install with [vim-plug](https://github.com/junegunn/vim-plug)
+>
+	Plug 'sbdchd/neoformat'
+<
+==============================================================================
+USAGE						*neoformat-usage* *Neoformat*
+
+Format the current file using its filetype
+>
+	:Neoformat
+<
+Specify a filetype
+>
+	:Neoformat python
+<
+Or specify a certain formatter
+>
+	:Neoformat javascript/js-beautify
+<
+==============================================================================
+SUPPORTED FILETYPES				*neoformat-supported-filetypes*
+
+- Arduino
+  - [uncrustify](http://uncrustify.sourceforge.net)
+- C
+  - [uncrustify](http://uncrustify.sourceforge.net)
+- C#
+  - [uncrustify](http://uncrustify.sourceforge.net)
+- C++
+  - [uncrustify](http://uncrustify.sourceforge.net)
+- CSS
+  - css-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
+- D
+  - [uncrustify](http://uncrustify.sourceforge.net), [dfmt](https://github.com/Hackerpilot/dfmt)
+- Elm
+  - [elm-format](https://github.com/avh4/elm-format)
+- Go
+  - [gofmt](https://golang.org/cmd/gofmt/), [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
+- Haskell
+  - [stylish-haskell](https://github.com/jaspervdj/stylish-haskell)
+- HTML
+  - html-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
+- Jade
+  - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
+- Java
+  - [uncrustify](http://uncrustify.sourceforge.net)
+- Javascript
+  - [js-beautify](https://github.com/beautify-web/js-beautify)
+- JSON
+  - [js-beautify](https://github.com/beautify-web/js-beautify)
+- Markdown
+  - [remark](https://github.com/wooorm/remark)
+- Objective-C
+  - [uncrustify](http://uncrustify.sourceforge.net)
+- Pawn
+  - [uncrustify](http://uncrustify.sourceforge.net)
+- Perl
+  - [perltidy](http://perltidy.sourceforge.net)
+- Pug (formally Jade)
+  - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
+- Python
+  - [yapf](https://github.com/google/yapf), [autopep8](https://github.com/hhatto/autopep8)
+- Ruby
+  - [ruby-beautify](https://github.com/erniebrodeur/ruby-beautify)
+- SASS
+  - [sass-convert](http://sass-lang.com/documentation/#executables)
+- SCSS
+  - [sass-convert](http://sass-lang.com/documentation/#executables)
+- SQL
+  - sqlformat (ships with [sqlparse](https://github.com/andialbrecht/sqlparse))
+- Typescript
+  - [tsfmt](https://github.com/vvakame/typescript-formatter)
+- VALA
+  - [uncrustify](http://uncrustify.sourceforge.net)
+- XHTML
+  - [tidy](http://www.html-tidy.org)
+- XML
+  - [tidy](http://www.html-tidy.org)
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:noet:
