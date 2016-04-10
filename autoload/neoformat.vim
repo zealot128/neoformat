@@ -13,14 +13,8 @@ function! g:neoformat#NeoformatRun(cmd) abort
                 \ 'on_exit' : function('s:on_exit'),
                 \ }
 
-    if type(a:cmd) ==# type([])
-        let l:cmd = a:cmd
-    else
-        let l:cmd = split(a:cmd)
-    endif
-
     try
-        let l:id = jobstart(l:cmd, l:job)
+        let l:id = jobstart(a:cmd, l:job)
     catch
         echom 'Neoformat: trying next formatter'
         call g:neoformat#Neoformat(s:formatters_cur + 1)
@@ -60,8 +54,7 @@ function! s:on_exit(job_id, data) abort
     let l:job = s:jobs[a:job_id]
 
     " take the output from the formatter and insert it into the file
-    let l:data = l:job.stdout
-    call s:UpdateFile(l:data)
+    call s:UpdateFile(l:job.stdout)
 
     unlet s:jobs[a:job_id]
 endfunction
@@ -161,8 +154,8 @@ function! s:genCmd(definition) abort
         let s:path = l:fullfilepath
     endif
 
-    " make sure there aren't any double spaces in the cmd
     let l:_fullcmd = l:cmd . ' ' . join(l:flags) . ' ' . s:path
+    " make sure there aren't any double spaces in the cmd
     let l:fullcmd = join(split(l:_fullcmd))
 
     return l:fullcmd
