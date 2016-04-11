@@ -47,8 +47,10 @@ To prevent this, format jobs are cancelled when changing / closing the buffer.
 
 **So don't switch buffers before the the formatting is complete!**
 
-Also, Neoformat reads from the current file, not the current buffer, so save current
-changes before formatting.
+Note: This should be resolved when [`setbufline()`](https://github.com/vim/vim/blob/9bd547aca41799605c3a3f83444f6725c2d6eda9/runtime/doc/todo.txt#L177) is added.
+
+By default, Neoformat reads from the current buffer, not the current file. This
+can be changed via the configuration variable `g:neoformat_read_from_buffer`.
 
 ## Config [Optional]
 
@@ -73,6 +75,12 @@ let g:neoformat_basic_format_retab = 1
 
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
+```
+
+Make Neoformat read from the file instead of the buffer.
+
+```viml
+let g:neoformat_read_from_buffer = 0
 ```
 
 ## Supported Filetypes

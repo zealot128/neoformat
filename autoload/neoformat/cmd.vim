@@ -25,8 +25,23 @@ function! neoformat#cmd#GenCmd(definition) abort
         let l:noappend = 0
     endif
 
-    "/Users/sloth/documents/example.vim
-    let l:fullfilepath = fnameescape(expand('%:p'))
+    if !exists('g:neoformat_read_from_buffer')
+        let g:neoformat_read_from_buffer = 1
+    endif
+
+    let l:filename = expand('%')
+
+    let l:data = getbufline(bufnr(l:filename), 1, '$')
+
+    if isdirectory('/tmp/') && g:neoformat_read_from_buffer == 1
+        let l:tempfile = '/tmp/' . fnameescape(l:filename)
+
+        call writefile(l:data, l:tempfile)
+        let l:fullfilepath = l:tempfile
+    else
+        "/Users/sloth/documents/example.vim
+        let l:fullfilepath = fnameescape(expand('%:p'))
+    endif
 
     if l:noappend
         let s:path = ''
