@@ -29,7 +29,8 @@ function! neoformat#cmd#GenCmd(definition) abort
         let g:neoformat_read_from_buffer = 1
     endif
 
-    let l:filename = expand('%')
+    " get the last path component, the filename
+    let l:filename = expand('%:t')
 
     let l:data = getbufline(bufnr(l:filename), 1, '$')
 
