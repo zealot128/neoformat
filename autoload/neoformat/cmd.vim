@@ -32,7 +32,7 @@ function! neoformat#cmd#GenCmd(definition) abort
     " get the last path component, the filename
     let l:filename = expand('%:t')
 
-    let l:data = getbufline(bufnr(l:filename), 1, '$')
+    let l:data = getbufline(bufnr('%'), 1, '$')
 
     if isdirectory('/tmp/') && g:neoformat_read_from_buffer == 1
         let l:tempfile = '/tmp/' . fnameescape(l:filename)
