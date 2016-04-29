@@ -14,14 +14,15 @@ function! neoformat#run#Neoformat(cmd) abort
                 \ }
 
     try
-        let l:id = jobstart(a:cmd, l:job)
+        let l:id = jobstart(a:cmd.exe, l:job)
     catch
         echom 'Neoformat: trying next formatter'
-        call neoformat#Neoformat(g:neoformat#run#formatterscur + 1)
+        call neoformat#init#Neoformat(g:neoformat#run#formatterscur + 1, '')
         return
     endtry
 
-    let l:job.id = l:id
+    let l:job.name = a:cmd.name
+    let l:job.id   = l:id
 
     let s:jobs[l:id] = l:job
 endfunction
@@ -53,8 +54,7 @@ function! s:on_exit(job_id, data) abort
     endif
     let l:job = s:jobs[a:job_id]
 
-    " take the output from the formatter and insert it into the file
-    call neoformat#format#UpdateFile(l:job.stdout)
+    call neoformat#format#UpdateFile(l:job)
 
     unlet s:jobs[a:job_id]
 endfunction

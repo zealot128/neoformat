@@ -1,28 +1,4 @@
-function! s:getFormatter(arg) abort
-    let l:s = split(a:arg, '/', 1)
-
-    if len(l:s) > 1
-        let l:formatter = l:s[1]
-        " need to remove all `-` since vim's variable definitions can't use
-        " them
-        return substitute(l:formatter, '-', '','g')
-    endif
-
-    return ''
-endfunction
-
-
-function! s:getFiletype(arg) abort
-    if a:arg ==# ''
-        return &filetype
-    endif
-    let l:s = split(a:arg, '/', 1)
-
-    return l:s[0]
-endfunction
-
-
-function! neoformat#init#Neoformat(start, userCMD) abort
+function! neoformat#init#Neoformat(start, user_cmd) abort
     if !has('nvim')
         echom 'Neoformat: Neovim is currently required to run this plugin'
         return
@@ -32,13 +8,10 @@ function! neoformat#init#Neoformat(start, userCMD) abort
     " usually after the first one fails
     let l:index = a:start !=? '' ? a:start : 0
 
-    let l:fmter = s:getFormatter(a:userCMD)
-
-    let l:filetype = s:getFiletype(a:userCMD)
-
+    let l:fmter                       = s:getFormatter(a:user_cmd)
+    let l:filetype                    = s:getFiletype(a:user_cmd)
     let g:neoformat#run#formatterscur = l:index
 
-    " Check the current filetype for formatters
     " check user defined formatters
     if exists('g:neoformat_enabled_' . l:filetype)
 
@@ -78,11 +51,34 @@ function! neoformat#init#Neoformat(start, userCMD) abort
         return
     endif
 
-    let l:cmd = neoformat#cmd#GenCmd(l:definition)
-    if l:cmd ==# ''
+    let l:cmd = neoformat#cmd#Generate(l:definition)
+    if l:cmd ==# {}
         echom 'Neoformat: error creating cmd'
         return
     endif
 
     call neoformat#run#Neoformat(l:cmd)
+endfunction
+
+
+function! s:getFormatter(arg) abort
+    let l:s = split(a:arg, '/', 1)
+
+    if len(l:s) > 1
+        let l:formatter = l:s[1]
+        " need to remove all `-`, they are invalid in viml
+        return substitute(l:formatter, '-', '','g')
+    endif
+
+    return ''
+endfunction
+
+
+function! s:getFiletype(arg) abort
+    if a:arg ==# ''
+        return &filetype
+    endif
+    let l:s = split(a:arg, '/', 1)
+
+    return l:s[0]
 endfunction

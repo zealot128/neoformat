@@ -233,3 +233,10 @@ let g:neoformat#arduino#uncrustify = {
             \ }
 
 let g:neoformat#enabled#arduino = ['uncrustify']
+
+" Lua
+let g:neoformat#lua#luaformatter = {
+            \ 'exe': 'luaformatter'
+            \ }
+
+let g:neoformat#enabled#lua = ['luaformatter']

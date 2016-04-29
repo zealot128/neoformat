@@ -7,7 +7,7 @@ will run a formatter _asynchronously_, and on success it will update the current
 buffer with the formatted text. On a formatter failure, Neoformat will try the next
 formatter defined for the filetype.
 
-The job control is based off of [vim-go's](https://github.com/fatih/vim-go).
+The job control is based off [vim-go's](https://github.com/fatih/vim-go).
 
 ## Basic Usage
 
@@ -113,6 +113,8 @@ let g:neoformat_read_from_buffer = 0
   - [js-beautify](https://github.com/beautify-web/js-beautify)
 - JSON
   - [js-beautify](https://github.com/beautify-web/js-beautify)
+- Lua
+  - [luaformatter](https://github.com/LuaDevelopmentTools/luaformatter)
 - Markdown
   - [remark](https://github.com/wooorm/remark)
 - Objective-C

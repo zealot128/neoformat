@@ -1,18 +1,21 @@
 function! neoformat#format#UpdateFile(data) abort
-    if len(a:data) < 1
+    let l:stdout         = a:data.stdout
+    let l:formatter_name = a:data.name
+
+    if len(l:stdout) < 1
         echom 'Neoformat: no data was provided by formatter program'
         return
     endif
 
-    let l:last = len(a:data)-1
-    let l:end = a:data[l:last]
+    let l:last = len(l:stdout)-1
+    let l:end  = l:stdout[l:last]
 
     " needed for some formatters that add empty new lines at the end of files
     " ex: remark
     if l:end ==# ''
-        let l:datalen = len(a:data)
+        let l:datalen = len(l:stdout)
     else
-        let l:datalen = len(a:data) + 1
+        let l:datalen = len(l:stdout) + 1
     endif
 
     " cleanup the end of the file
@@ -25,19 +28,20 @@ function! neoformat#format#UpdateFile(data) abort
 
     " remove extra newlines at the end of formatted file data
     if l:end ==# ''
-        call remove(a:data, l:last)
+        call remove(l:stdout, l:last)
     endif
 
     " ensure file needs to be changed
     let l:lines = getbufline(bufnr('%'), 1, '$')
-    if a:data ==# l:lines
+    if l:stdout ==# l:lines
         echom 'Neoformat: no change necessary'
         return
     endif
 
     " setline() is used instead of writefile() so that marks, jumps, etc. are kept
-    call setline(1, a:data)
-    echom 'Neoformat: formatted file'
+    call setline(1, l:stdout)
+
+    echom 'Neoformat: formatted file with ' . l:formatter_name
 endfunction
 
 
