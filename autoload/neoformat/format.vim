@@ -3,7 +3,7 @@ function! neoformat#format#UpdateFile(data) abort
     let l:formatter_name = a:data.name
 
     if len(l:stdout) < 1
-        echom 'Neoformat: no data was provided by formatter program'
+        echom 'Neoformat: no data was provided by ' . l:formatter_name
         return
     endif
 
@@ -34,7 +34,7 @@ function! neoformat#format#UpdateFile(data) abort
     " ensure file needs to be changed
     let l:lines = getbufline(bufnr('%'), 1, '$')
     if l:stdout ==# l:lines
-        echom 'Neoformat: no change necessary'
+        echom 'Neoformat: no change necessary with ' . l:formatter_name
         return
     endif
 
