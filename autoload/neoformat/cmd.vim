@@ -31,7 +31,11 @@ function! neoformat#cmd#Generate(definition) abort
     let l:data     = getbufline(bufnr('%'), 1, '$')
 
     if isdirectory('/tmp/') && g:neoformat_read_from_buffer == 1
-        let l:tempfile = '/tmp/' . fnameescape(l:filename)
+        if !isdirectory('/tmp/neoformat/')
+            call mkdir('/tmp/neoformat/')
+        endif
+
+        let l:tempfile = '/tmp/neoformat/' . fnameescape(l:filename)
 
         call writefile(l:data, l:tempfile)
         let l:fullfilepath = l:tempfile
