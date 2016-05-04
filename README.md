@@ -88,13 +88,11 @@ let g:neoformat_read_from_buffer = 0
 - Arduino
   - [uncrustify](http://uncrustify.sourceforge.net)
 - C
-  - [uncrustify](http://uncrustify.sourceforge.net)
-  - [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
+  - [uncrustify](http://uncrustify.sourceforge.net), [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
 - C#
   - [uncrustify](http://uncrustify.sourceforge.net)
 - C++
-  - [uncrustify](http://uncrustify.sourceforge.net)
-  - [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
+  - [uncrustify](http://uncrustify.sourceforge.net), [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
 - CSS
   - css-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
 - D
@@ -120,8 +118,7 @@ let g:neoformat_read_from_buffer = 0
 - Markdown
   - [remark](https://github.com/wooorm/remark)
 - Objective-C
-  - [uncrustify](http://uncrustify.sourceforge.net)
-  - [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
+  - [uncrustify](http://uncrustify.sourceforge.net), [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
 - Pawn
   - [uncrustify](http://uncrustify.sourceforge.net)
 - Perl
@@ -134,6 +131,8 @@ let g:neoformat_read_from_buffer = 0
   - [ruby-beautify](https://github.com/erniebrodeur/ruby-beautify)
 - SASS
   - [sass-convert](http://sass-lang.com/documentation/#executables)
+- Scala
+  - [scalariform](https://github.com/scala-ide/scalariform)
 - SCSS
   - [sass-convert](http://sass-lang.com/documentation/#executables)
 - SQL

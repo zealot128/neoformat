@@ -252,3 +252,11 @@ let g:neoformat#lua#luaformatter = {
             \ }
 
 let g:neoformat#enabled#lua = ['luaformatter']
+
+" Scala
+let g:neoformat#scala#scalariform = {
+            \ 'exe': 'scalariform',
+            \ 'flags': ['--stdout']
+            \ }
+
+let g:neoformat#enabled#scala = ['scalariform']
