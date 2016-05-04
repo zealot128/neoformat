@@ -48,10 +48,12 @@ SUPPORTED FILETYPES				*neoformat-supported-filetypes*
   - [uncrustify](http://uncrustify.sourceforge.net)
 - C
   - [uncrustify](http://uncrustify.sourceforge.net)
+  - [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
 - C#
   - [uncrustify](http://uncrustify.sourceforge.net)
 - C++
   - [uncrustify](http://uncrustify.sourceforge.net)
+  - [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
 - CSS
   - css-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
 - D
@@ -78,6 +80,7 @@ SUPPORTED FILETYPES				*neoformat-supported-filetypes*
   - [remark](https://github.com/wooorm/remark)
 - Objective-C
   - [uncrustify](http://uncrustify.sourceforge.net)
+  - [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
 - Pawn
   - [uncrustify](http://uncrustify.sourceforge.net)
 - Perl

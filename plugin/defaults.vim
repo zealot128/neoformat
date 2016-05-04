@@ -111,7 +111,11 @@ let g:neoformat#c#uncrustify = {
             \ 'flags': ['-q', '-l C', '-f']
             \ }
 
-let g:neoformat#enabled#c = ['uncrustify']
+let g:neoformat#c#clangformat = {
+            \ 'exe': 'clang-format',
+            \ }
+
+let g:neoformat#enabled#c = ['uncrustify', 'clangformat']
 
 " C++
 let g:neoformat#cpp#uncrustify = {
@@ -119,7 +123,11 @@ let g:neoformat#cpp#uncrustify = {
             \ 'flags': ['-q', '-l CPP', '-f']
             \ }
 
-let g:neoformat#enabled#cpp = ['uncrustify']
+ let g:neoformat#cpp#clangformat = {
+            \ 'exe': 'clang-format',
+            \ }
+
+let g:neoformat#enabled#cpp = ['uncrustify', 'clangformat']
 
 " C#
 let g:neoformat#cs#uncrustify = {
@@ -135,7 +143,11 @@ let g:neoformat#objc#uncrustify = {
             \ 'flags': ['-q', '-l OC+', '-f']
             \ }
 
-let g:neoformat#enabled#objc = ['uncrustify']
+let g:neoformat#objc#clangformat = {
+            \ 'exe': 'clang-format',
+            \ }
+
+let g:neoformat#enabled#objc = ['uncrustify', 'clangformat']
 
 " D
 let g:neoformat#d#dfmt = {
