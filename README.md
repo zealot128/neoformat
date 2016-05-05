@@ -97,6 +97,8 @@ let g:neoformat_read_from_buffer = 0
   - css-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
 - D
   - [uncrustify](http://uncrustify.sourceforge.net), [dfmt](https://github.com/Hackerpilot/dfmt)
+- Dart
+  - [dartfmt](https://www.dartlang.org/tools/)
 - Elm
   - [elm-format](https://github.com/avh4/elm-format)
 - Go
@@ -125,6 +127,8 @@ let g:neoformat_read_from_buffer = 0
   - [uncrustify](http://uncrustify.sourceforge.net)
 - Perl
   - [perltidy](http://perltidy.sourceforge.net)
+- PHP
+  - [php_beautifier](http://pear.php.net/package/PHP_Beautifier)
 - Pug (formally Jade)
   - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
 - Python

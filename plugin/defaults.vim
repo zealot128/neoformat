@@ -267,3 +267,17 @@ let g:neoformat#ocaml#ocpindent = {
             \ }
 
 let g:neoformat#enabled#ocaml = ['ocpindent']
+
+" PHP
+let g:neoformat#php#phpbeautifier = {
+            \ 'exe': 'php_beautifier',
+            \ }
+
+let g:neoformat#enabled#php = ['phpbeautifier']
+
+" Dart
+let g:neoformat#dart#dartfmt = {
+            \ 'exe': 'dartfmt',
+            \ }
+
+let g:neoformat#enabled#dart = ['dartfmt']
