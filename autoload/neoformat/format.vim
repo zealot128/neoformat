@@ -62,7 +62,9 @@ function! neoformat#format#BasicFormat() abort
 
     if g:neoformat_basic_format_align
         echom 'Neoformat: aligning with basic formatter'
+        let l:v = winsaveview()
         silent! execute 'normal gg=G'
+        call winrestview(l:v)
     endif
     if g:neoformat_basic_format_retab
         echom 'Neoformat: converting tabs with basic formatter'
