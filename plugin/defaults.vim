@@ -260,3 +260,10 @@ let g:neoformat#scala#scalariform = {
             \ }
 
 let g:neoformat#enabled#scala = ['scalariform']
+
+" OCaml
+let g:neoformat#ocaml#ocpindent = {
+            \ 'exe': 'ocp-indent',
+            \ }
+
+let g:neoformat#enabled#ocaml = ['ocpindent']

@@ -78,6 +78,8 @@ SUPPORTED FILETYPES				*neoformat-supported-filetypes*
   - [remark](https://github.com/wooorm/remark)
 - Objective-C
   - [uncrustify](http://uncrustify.sourceforge.net), [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
+- OCaml
+  - [ocp-indent](http://www.typerex.org/ocp-indent.html)
 - Pawn
   - [uncrustify](http://uncrustify.sourceforge.net)
 - Perl

@@ -119,6 +119,8 @@ let g:neoformat_read_from_buffer = 0
   - [remark](https://github.com/wooorm/remark)
 - Objective-C
   - [uncrustify](http://uncrustify.sourceforge.net), [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
+- OCaml
+  - [ocp-indent](http://www.typerex.org/ocp-indent.html)
 - Pawn
   - [uncrustify](http://uncrustify.sourceforge.net)
 - Perl
