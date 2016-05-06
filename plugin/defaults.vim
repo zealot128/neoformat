@@ -281,3 +281,11 @@ let g:neoformat#dart#dartfmt = {
             \ }
 
 let g:neoformat#enabled#dart = ['dartfmt']
+
+" Rust
+let g:neoformat#rust#rustfmt = {
+            \ 'exe': 'rustfmt',
+            \ 'replace': 1
+            \ }
+
+let g:neoformat#enabled#rust = ['rustfmt']

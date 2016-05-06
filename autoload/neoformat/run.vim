@@ -21,8 +21,10 @@ function! neoformat#run#Neoformat(cmd) abort
         return
     endtry
 
-    let l:job.name = a:cmd.name
-    let l:job.id   = l:id
+    let l:job.id          = l:id
+    let l:job.name        = a:cmd.name
+    let l:job.replace     = a:cmd.replace
+    let l:job.tmpfilepath = a:cmd.tmpfilepath
 
     let s:jobs[l:id] = l:job
 endfunction

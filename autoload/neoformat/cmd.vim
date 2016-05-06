@@ -22,6 +22,11 @@ function! neoformat#cmd#Generate(definition) abort
         let l:noappend = get(a:definition, 'noappend')
     endif
 
+    let l:replace = 0
+    if has_key(a:definition, 'replace')
+        let l:replace = get(a:definition, 'replace')
+    endif
+
     if !exists('g:neoformat_read_from_buffer')
         let g:neoformat_read_from_buffer = 1
     endif
@@ -50,8 +55,12 @@ function! neoformat#cmd#Generate(definition) abort
     " make sure there aren't any double spaces in the cmd
     let l:fullcmd = join(split(l:_fullcmd))
 
+
+    " TODO: maybe just combine the two dicts instead of manually copying stuff
     return {
-        \ 'exe': l:fullcmd,
-        \ 'name': a:definition.exe
+        \ 'exe':         l:fullcmd,
+        \ 'name':        a:definition.exe,
+        \ 'tmpfilepath': l:fullfilepath,
+        \ 'replace':     l:replace
         \ }
 endfunction
