@@ -45,23 +45,32 @@ Or specify a certain formatter
 SUPPORTED FILETYPES				*neoformat-supported-filetypes*
 
 - Arduino
-  - [uncrustify](http://uncrustify.sourceforge.net)
+  - [uncrustify](http://uncrustify.sourceforge.net),
+    [clang-format](http://clang.llvm.org/docs/ClangFormat.html),
+    [astyle](http://astyle.sourceforge.net)
 - C
-  - [uncrustify](http://uncrustify.sourceforge.net), [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
+  - [uncrustify](http://uncrustify.sourceforge.net),
+    [clang-format](http://clang.llvm.org/docs/ClangFormat.html),
+    [astyle](http://astyle.sourceforge.net)
 - C#
-  - [uncrustify](http://uncrustify.sourceforge.net)
+  - [uncrustify](http://uncrustify.sourceforge.net),
+    [astyle](http://astyle.sourceforge.net)
 - C++
-  - [uncrustify](http://uncrustify.sourceforge.net), [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
+  - [uncrustify](http://uncrustify.sourceforge.net),
+    [clang-format](http://clang.llvm.org/docs/ClangFormat.html),
+    [astyle](http://astyle.sourceforge.net)
 - CSS
   - css-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
 - D
-  - [uncrustify](http://uncrustify.sourceforge.net), [dfmt](https://github.com/Hackerpilot/dfmt)
+  - [uncrustify](http://uncrustify.sourceforge.net),
+    [dfmt](https://github.com/Hackerpilot/dfmt)
 - Dart
   - [dartfmt](https://www.dartlang.org/tools/)
 - Elm
   - [elm-format](https://github.com/avh4/elm-format)
 - Go
-  - [gofmt](https://golang.org/cmd/gofmt/), [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
+  - [gofmt](https://golang.org/cmd/gofmt/),
+    [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
 - Haskell
   - [stylish-haskell](https://github.com/jaspervdj/stylish-haskell)
 - HTML
@@ -69,7 +78,8 @@ SUPPORTED FILETYPES				*neoformat-supported-filetypes*
 - Jade
   - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
 - Java
-  - [uncrustify](http://uncrustify.sourceforge.net)
+  - [uncrustify](http://uncrustify.sourceforge.net),
+    [astyle](http://astyle.sourceforge.net)
 - Javascript
   - [js-beautify](https://github.com/beautify-web/js-beautify)
 - JSON
@@ -79,7 +89,8 @@ SUPPORTED FILETYPES				*neoformat-supported-filetypes*
 - Markdown
   - [remark](https://github.com/wooorm/remark)
 - Objective-C
-  - [uncrustify](http://uncrustify.sourceforge.net), [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
+  - [uncrustify](http://uncrustify.sourceforge.net),
+    [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
 - OCaml
   - [ocp-indent](http://www.typerex.org/ocp-indent.html)
 - Pawn
@@ -88,12 +99,17 @@ SUPPORTED FILETYPES				*neoformat-supported-filetypes*
   - [perltidy](http://perltidy.sourceforge.net)
 - PHP
   - [php_beautifier](http://pear.php.net/package/PHP_Beautifier)
+- Proto
+  - [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
 - Pug (formally Jade)
   - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
 - Python
-  - [yapf](https://github.com/google/yapf), [autopep8](https://github.com/hhatto/autopep8)
+  - [yapf](https://github.com/google/yapf),
+    [autopep8](https://github.com/hhatto/autopep8)
 - Ruby
   - [ruby-beautify](https://github.com/erniebrodeur/ruby-beautify)
+- Rust
+  - [rustfmt](https://github.com/rust-lang-nursery/rustfmt)
 - SASS
   - [sass-convert](http://sass-lang.com/documentation/#executables)
 - Scala

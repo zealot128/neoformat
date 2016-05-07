@@ -15,7 +15,11 @@ let g:neoformat#javascript#jsbeautify = {
             \ 'exe': 'js-beautify'
             \ }
 
-let g:neoformat#enabled#javascript = ['jsbeautify']
+let g:neoformat#javascript#clangformat = {
+            \ 'exe': 'clang-format',
+            \ }
+
+let g:neoformat#enabled#javascript = ['jsbeautify', 'clangformat']
 
 
 " JSON
@@ -87,7 +91,17 @@ let g:neoformat#java#uncrustify = {
             \ 'flags': ['-q', '-l JAVA', '-f']
             \ }
 
-let g:neoformat#enabled#java = ['uncrustify']
+let g:neoformat#java#astyle = {
+            \ 'exe': 'astyle',
+            \ 'flags': ['--mode=java'],
+            \ 'replace': 1
+            \ }
+
+let g:neoformat#java#clangformat = {
+            \ 'exe': 'clang-format',
+            \ }
+
+let g:neoformat#enabled#java = ['uncrustify', 'astyle', 'clang-format']
 
 " Markdown
 let g:neoformat#markdown#remark = {
@@ -115,7 +129,13 @@ let g:neoformat#c#clangformat = {
             \ 'exe': 'clang-format',
             \ }
 
-let g:neoformat#enabled#c = ['uncrustify', 'clangformat']
+let g:neoformat#c#astyle = {
+            \ 'exe': 'astyle',
+            \ 'flags': ['--mode=c'],
+            \ 'replace': 1
+            \ }
+
+let g:neoformat#enabled#c = ['uncrustify', 'clangformat', 'astyle']
 
 " C++
 let g:neoformat#cpp#uncrustify = {
@@ -127,7 +147,13 @@ let g:neoformat#cpp#uncrustify = {
             \ 'exe': 'clang-format',
             \ }
 
-let g:neoformat#enabled#cpp = ['uncrustify', 'clangformat']
+let g:neoformat#cpp#astyle = {
+            \ 'exe': 'astyle',
+            \ 'flags': ['--mode=c'],
+            \ 'replace': 1
+            \ }
+
+let g:neoformat#enabled#cpp = ['uncrustify', 'clangformat', 'astyle']
 
 " C#
 let g:neoformat#cs#uncrustify = {
@@ -135,7 +161,13 @@ let g:neoformat#cs#uncrustify = {
             \ 'flags': ['-q', '-l CS', '-f']
             \ }
 
-let g:neoformat#enabled#cs = ['uncrustify']
+let g:neoformat#cs#astyle = {
+            \ 'exe': 'astyle',
+            \ 'flags': ['--mode=cs'],
+            \ 'replace': 1
+            \ }
+
+let g:neoformat#enabled#cs = ['uncrustify', 'astyle']
 
 " Objective-C
 let g:neoformat#objc#uncrustify = {
@@ -244,7 +276,17 @@ let g:neoformat#arduino#uncrustify = {
             \ 'flags': ['-q', '-l CPP', '-f']
             \ }
 
-let g:neoformat#enabled#arduino = ['uncrustify']
+let g:neoformat#arduino#clangformat = {
+            \ 'exe': 'clang-format',
+            \ }
+
+let g:neoformat#arduino#astyle = {
+            \ 'exe': 'astyle',
+            \ 'flags': ['--mode=c'],
+            \ 'replace': 1
+            \ }
+
+let g:neoformat#enabled#arduino = ['uncrustify', 'clangformat', 'astyle']
 
 " Lua
 let g:neoformat#lua#luaformatter = {
@@ -289,3 +331,10 @@ let g:neoformat#rust#rustfmt = {
             \ }
 
 let g:neoformat#enabled#rust = ['rustfmt']
+
+" Proto
+let g:neoformat#proto#clangformat = {
+            \ 'exe': 'clang-format',
+            \ }
+
+let g:neoformat#enabled#proto = ['clangformat']
