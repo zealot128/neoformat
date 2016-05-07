@@ -100,6 +100,8 @@ let g:neoformat_read_from_buffer = 0
   - [uncrustify](http://uncrustify.sourceforge.net),
     [clang-format](http://clang.llvm.org/docs/ClangFormat.html),
     [astyle](http://astyle.sourceforge.net)
+- Crystal
+  - crystal tool format (ships with [crystal](http://crystal-lang.org))
 - CSS
   - css-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
 - D

@@ -338,3 +338,12 @@ let g:neoformat#proto#clangformat = {
             \ }
 
 let g:neoformat#enabled#proto = ['clangformat']
+
+" Crystal
+let g:neoformat#crystal#crystalformat = {
+            \ 'exe': 'crystal',
+            \ 'flags': ['tool', 'format'],
+            \ 'replace': 1
+            \ }
+
+let g:neoformat#enabled#crystal = ['crystalformat']
