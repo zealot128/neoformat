@@ -128,6 +128,8 @@ let g:neoformat_read_from_buffer = 0
   - [js-beautify](https://github.com/beautify-web/js-beautify)
 - JSON
   - [js-beautify](https://github.com/beautify-web/js-beautify)
+- LESS
+  - [csscomb](http://csscomb.com)
 - Lua
   - [luaformatter](https://github.com/LuaDevelopmentTools/luaformatter)
 - Markdown
@@ -155,11 +157,13 @@ let g:neoformat_read_from_buffer = 0
 - Rust
   - [rustfmt](https://github.com/rust-lang-nursery/rustfmt)
 - SASS
-  - [sass-convert](http://sass-lang.com/documentation/#executables)
+  - [sass-convert](http://sass-lang.com/documentation/#executables),
+    [csscomb](http://csscomb.com)
 - Scala
   - [scalariform](https://github.com/scala-ide/scalariform)
 - SCSS
-  - [sass-convert](http://sass-lang.com/documentation/#executables)
+  - [sass-convert](http://sass-lang.com/documentation/#executables),
+    [csscomb](http://csscomb.com)
 - SQL
   - sqlformat (ships with [sqlparse](https://github.com/andialbrecht/sqlparse))
 - Typescript

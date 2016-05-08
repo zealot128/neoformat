@@ -59,7 +59,12 @@ let g:neoformat#scss#sassconvert = {
             \ 'flags': ['-T scss']
             \ }
 
-let g:neoformat#enabled#scss = ['sassconvert']
+let g:neoformat#scss#csscomb = {
+            \ 'exe': 'csscomb',
+            \ 'replace': 1
+            \ }
+
+let g:neoformat#enabled#scss = ['sassconvert', 'csscomb']
 
 " SASS
 let g:neoformat#sass#sassconvert = {
@@ -67,7 +72,12 @@ let g:neoformat#sass#sassconvert = {
             \ 'flags': ['-T sass']
             \ }
 
-let g:neoformat#enabled#sass = ['sassconvert']
+let g:neoformat#sass#csscomb = {
+            \ 'exe': 'csscomb',
+            \ 'replace': 1
+            \ }
+
+let g:neoformat#enabled#sass = ['sassconvert', 'csscomb']
 
 " Go
 let g:neoformat#go#gofmt = {
@@ -352,3 +362,11 @@ let g:neoformat#crystal#crystalformat = {
             \ }
 
 let g:neoformat#enabled#crystal = ['crystalformat']
+
+" LESS
+let g:neoformat#less#csscomb = {
+            \ 'exe': 'csscomb',
+            \ 'replace': 1
+            \ }
+
+let g:neoformat#enabled#less = ['csscomb']
