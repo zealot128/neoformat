@@ -46,7 +46,12 @@ let g:neoformat#css#cssbeautify = {
             \ 'exe': 'css-beautify'
             \ }
 
-let g:neoformat#enabled#css = ['cssbeautify']
+let g:neoformat#css#csscomb = {
+            \ 'exe': 'csscomb',
+            \ 'replace': 1
+            \ }
+
+let g:neoformat#enabled#css = ['cssbeautify', 'csscomb']
 
 " SCSS
 let g:neoformat#scss#sassconvert = {

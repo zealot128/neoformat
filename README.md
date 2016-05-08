@@ -103,7 +103,8 @@ let g:neoformat_read_from_buffer = 0
 - Crystal
   - crystal tool format (ships with [crystal](http://crystal-lang.org))
 - CSS
-  - css-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
+  - css-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify)),
+    [csscomb](http://csscomb.com)
 - D
   - [uncrustify](http://uncrustify.sourceforge.net),
     [dfmt](https://github.com/Hackerpilot/dfmt)
