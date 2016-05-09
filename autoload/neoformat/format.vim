@@ -3,7 +3,7 @@ function! neoformat#format#UpdateFile(job) abort
     let l:formatter_name = a:job.name
 
     if a:job.replace == 1
-        let l:data = readfile(a:job.tmpfilepath)
+        let l:data = readfile(a:job.path)
     endif
 
     if len(l:data) < 1

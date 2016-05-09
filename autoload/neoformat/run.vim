@@ -17,14 +17,13 @@ function! neoformat#run#Neoformat(cmd) abort
         let l:id = jobstart(a:cmd.exe, l:job)
     catch
         echom 'Neoformat: trying next formatter'
-        call neoformat#init#Neoformat(g:neoformat#run#formatterscur + 1, '')
-        return
+        return neoformat#init#Neoformat(g:neoformat#run#formatterscur + 1, '')
     endtry
 
-    let l:job.id          = l:id
-    let l:job.name        = a:cmd.name
-    let l:job.replace     = a:cmd.replace
-    let l:job.tmpfilepath = a:cmd.tmpfilepath
+    let l:job.id      = l:id
+    let l:job.name    = a:cmd.name
+    let l:job.replace = a:cmd.replace
+    let l:job.path    = a:cmd.path
 
     let s:jobs[l:id] = l:job
 endfunction

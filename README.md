@@ -128,7 +128,7 @@ let g:neoformat_read_from_buffer = 0
   - [js-beautify](https://github.com/beautify-web/js-beautify)
 - JSON
   - [js-beautify](https://github.com/beautify-web/js-beautify)
-- LESS
+- Less
   - [csscomb](http://csscomb.com)
 - Lua
   - [luaformatter](https://github.com/LuaDevelopmentTools/luaformatter)
@@ -156,7 +156,7 @@ let g:neoformat_read_from_buffer = 0
   - [ruby-beautify](https://github.com/erniebrodeur/ruby-beautify)
 - Rust
   - [rustfmt](https://github.com/rust-lang-nursery/rustfmt)
-- SASS
+- Sass
   - [sass-convert](http://sass-lang.com/documentation/#executables),
     [csscomb](http://csscomb.com)
 - Scala

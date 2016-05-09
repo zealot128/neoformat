@@ -47,8 +47,7 @@ function! neoformat#init#Neoformat(start, user_cmd) abort
         let l:definition = g:neoformat#{l:filetype}#{l:formatter}
 
     else
-        call neoformat#format#BasicFormat()
-        return
+        return neoformat#format#BasicFormat()
     endif
 
     let l:cmd = neoformat#cmd#Generate(l:definition)

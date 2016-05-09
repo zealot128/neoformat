@@ -1,5 +1,4 @@
 function! neoformat#cmd#Generate(definition) abort
-
     if has_key(a:definition, 'exe')
         let l:cmd = get(a:definition, 'exe')
         if !executable(l:cmd)
@@ -11,15 +10,9 @@ function! neoformat#cmd#Generate(definition) abort
         return {}
     endif
 
-    let l:flags = []
-    if has_key(a:definition, 'flags')
-        let l:flags = get(a:definition, 'flags')
-    endif
-
-    " default to appending filename
-    let l:noappend = 0
-    if has_key(a:definition, 'noappend')
-        let l:noappend = get(a:definition, 'noappend')
+    let l:args = []
+    if has_key(a:definition, 'args')
+        let l:args = get(a:definition, 'args')
     endif
 
     let l:replace = 0
@@ -40,27 +33,21 @@ function! neoformat#cmd#Generate(definition) abort
             call mkdir('/tmp/neoformat/')
         endif
 
-        let l:tempfile = '/tmp/neoformat/' . fnameescape(l:filename)
-
-        call writefile(l:data, l:tempfile)
-        let l:fullfilepath = l:tempfile
+        let l:path = '/tmp/neoformat/' . fnameescape(l:filename)
+        call writefile(l:data, l:path)
     else
-        "/Users/sloth/documents/example.vim
-        let l:fullfilepath = fnameescape(expand('%:p'))
+        " /Users/sloth/documents/example.vim
+        let l:path = fnameescape(expand('%:p'))
     endif
 
-    let s:path = l:noappend ? '' : l:fullfilepath
-
-    let l:_fullcmd = l:cmd . ' ' . join(l:flags) . ' ' . s:path
+    let l:_fullcmd = l:cmd . ' ' . join(l:args) . ' ' . l:path
     " make sure there aren't any double spaces in the cmd
     let l:fullcmd = join(split(l:_fullcmd))
 
-
-    " TODO: maybe just combine the two dicts instead of manually copying stuff
     return {
-        \ 'exe':         l:fullcmd,
-        \ 'name':        a:definition.exe,
-        \ 'tmpfilepath': l:fullfilepath,
-        \ 'replace':     l:replace
+        \ 'exe':     l:fullcmd,
+        \ 'name':    a:definition.exe,
+        \ 'path':    l:path,
+        \ 'replace': l:replace
         \ }
 endfunction

@@ -35,7 +35,7 @@ let g:neoformat#html#htmlbeautify = {
             \ }
 let g:neoformat#html#tidy = {
             \ 'exe': 'tidy',
-            \ 'flags': ['-quiet', '--indent auto', '--indent-spaces 4',
+            \ 'args': ['-quiet', '--indent auto', '--indent-spaces 4',
             \           '--vertical-space yes', '--tidy-mark no']
             \ }
 
@@ -56,7 +56,7 @@ let g:neoformat#enabled#css = ['cssbeautify', 'csscomb']
 " SCSS
 let g:neoformat#scss#sassconvert = {
             \ 'exe': 'sass-convert',
-            \ 'flags': ['-T scss']
+            \ 'args': ['-T scss']
             \ }
 
 let g:neoformat#scss#csscomb = {
@@ -69,7 +69,7 @@ let g:neoformat#enabled#scss = ['sassconvert', 'csscomb']
 " SASS
 let g:neoformat#sass#sassconvert = {
             \ 'exe': 'sass-convert',
-            \ 'flags': ['-T sass']
+            \ 'args': ['-T sass']
             \ }
 
 let g:neoformat#sass#csscomb = {
@@ -81,7 +81,7 @@ let g:neoformat#enabled#sass = ['sassconvert', 'csscomb']
 
 " Go
 let g:neoformat#go#gofmt = {
-            \ 'exe': 'goimport'
+            \ 'exe': 'gofmt'
             \ }
 
 let g:neoformat#go#goimports = {
@@ -94,7 +94,7 @@ let g:neoformat#enabled#go = ['goimports', 'gofmt']
 " Ruby
 let g:neoformat#ruby#rubybeautify = {
             \ 'exe': 'ruby-beautify',
-            \ 'flags': ['--spaces', '-c 2']
+            \ 'args': ['--spaces', '-c 2']
             \ }
 
 let g:neoformat#enabled#ruby = ['rubybeautify']
@@ -103,12 +103,12 @@ let g:neoformat#enabled#ruby = ['rubybeautify']
 " Java
 let g:neoformat#java#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-l JAVA', '-f']
+            \ 'args': ['-q', '-l JAVA', '-f']
             \ }
 
 let g:neoformat#java#astyle = {
             \ 'exe': 'astyle',
-            \ 'flags': ['--mode=java'],
+            \ 'args': ['--mode=java'],
             \ 'replace': 1
             \ }
 
@@ -121,7 +121,7 @@ let g:neoformat#enabled#java = ['uncrustify', 'astyle', 'clang-format']
 " Markdown
 let g:neoformat#markdown#remark = {
             \ 'exe': 'remark',
-            \ 'flags': ['--no-color', '--silent']
+            \ 'args': ['--no-color', '--silent']
             \ }
 
 let g:neoformat#enabled#markdown = ['remark']
@@ -129,7 +129,7 @@ let g:neoformat#enabled#markdown = ['remark']
 " SQL
 let g:neoformat#sql#sqlformat = {
             \ 'exe': 'sqlformat',
-            \ 'flags': ['--reindent']
+            \ 'args': ['--reindent']
             \ }
 
 let g:neoformat#enabled#sql = ['sqlformat']
@@ -137,7 +137,7 @@ let g:neoformat#enabled#sql = ['sqlformat']
 " C
 let g:neoformat#c#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-l C', '-f']
+            \ 'args': ['-q', '-l C', '-f']
             \ }
 
 let g:neoformat#c#clangformat = {
@@ -146,7 +146,7 @@ let g:neoformat#c#clangformat = {
 
 let g:neoformat#c#astyle = {
             \ 'exe': 'astyle',
-            \ 'flags': ['--mode=c'],
+            \ 'args': ['--mode=c'],
             \ 'replace': 1
             \ }
 
@@ -155,7 +155,7 @@ let g:neoformat#enabled#c = ['uncrustify', 'clangformat', 'astyle']
 " C++
 let g:neoformat#cpp#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-l CPP', '-f']
+            \ 'args': ['-q', '-l CPP', '-f']
             \ }
 
  let g:neoformat#cpp#clangformat = {
@@ -164,7 +164,7 @@ let g:neoformat#cpp#uncrustify = {
 
 let g:neoformat#cpp#astyle = {
             \ 'exe': 'astyle',
-            \ 'flags': ['--mode=c'],
+            \ 'args': ['--mode=c'],
             \ 'replace': 1
             \ }
 
@@ -173,12 +173,12 @@ let g:neoformat#enabled#cpp = ['uncrustify', 'clangformat', 'astyle']
 " C#
 let g:neoformat#cs#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-l CS', '-f']
+            \ 'args': ['-q', '-l CS', '-f']
             \ }
 
 let g:neoformat#cs#astyle = {
             \ 'exe': 'astyle',
-            \ 'flags': ['--mode=cs'],
+            \ 'args': ['--mode=cs'],
             \ 'replace': 1
             \ }
 
@@ -187,7 +187,7 @@ let g:neoformat#enabled#cs = ['uncrustify', 'astyle']
 " Objective-C
 let g:neoformat#objc#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-l OC+', '-f']
+            \ 'args': ['-q', '-l OC+', '-f']
             \ }
 
 let g:neoformat#objc#clangformat = {
@@ -203,7 +203,7 @@ let g:neoformat#d#dfmt = {
 
 let g:neoformat#d#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-l D', '-f']
+            \ 'args': ['-q', '-l D', '-f']
             \ }
 
 let g:neoformat#enabled#d = ['uncrustify', 'dfmt']
@@ -211,7 +211,7 @@ let g:neoformat#enabled#d = ['uncrustify', 'dfmt']
 " Pawn
 let g:neoformat#pawn#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-l PAWN', '-f']
+            \ 'args': ['-q', '-l PAWN', '-f']
             \ }
 
 let g:neoformat#enabled#pawn = ['uncrustify']
@@ -219,7 +219,7 @@ let g:neoformat#enabled#pawn = ['uncrustify']
 " VALA
 let g:neoformat#vala#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-l VALA', '-f']
+            \ 'args': ['-q', '-l VALA', '-f']
             \ }
 
 let g:neoformat#enabled#vala = ['uncrustify']
@@ -262,7 +262,7 @@ let g:neoformat#enabled#jade = ['pugbeautifier']
 " XML
 let g:neoformat#xml#tidy = {
             \ 'exe': 'tidy',
-            \ 'flags': ['-quiet', '-xml', '--indent auto', '--indent-spaces 4',
+            \ 'args': ['-quiet', '-xml', '--indent auto', '--indent-spaces 4',
             \           '--vertical-space yes', '--tidy-mark no']
             \ }
 
@@ -271,7 +271,7 @@ let g:neoformat#enabled#xml = ['tidy']
 " XHTML
 let g:neoformat#xhtml#tidy = {
             \ 'exe': 'tidy',
-            \ 'flags': ['-quiet', '-asxhtml', '--indent auto', '--indent-spaces 4',
+            \ 'args': ['-quiet', '-asxhtml', '--indent auto', '--indent-spaces 4',
             \           '--vertical-space yes', '--tidy-mark no']
             \ }
 
@@ -280,7 +280,7 @@ let g:neoformat#enabled#xhtml = ['tidy']
 " Perl
 let g:neoformat#perl#perltidy = {
             \ 'exe': 'perltidy',
-            \ 'flags': ['--standard-output']
+            \ 'args': ['--standard-output']
             \ }
 
 let g:neoformat#enabled#perl = ['perltidy']
@@ -288,7 +288,7 @@ let g:neoformat#enabled#perl = ['perltidy']
 " Arduino
 let g:neoformat#arduino#uncrustify = {
             \ 'exe': 'uncrustify',
-            \ 'flags': ['-q', '-l CPP', '-f']
+            \ 'args': ['-q', '-l CPP', '-f']
             \ }
 
 let g:neoformat#arduino#clangformat = {
@@ -297,7 +297,7 @@ let g:neoformat#arduino#clangformat = {
 
 let g:neoformat#arduino#astyle = {
             \ 'exe': 'astyle',
-            \ 'flags': ['--mode=c'],
+            \ 'args': ['--mode=c'],
             \ 'replace': 1
             \ }
 
@@ -313,7 +313,7 @@ let g:neoformat#enabled#lua = ['luaformatter']
 " Scala
 let g:neoformat#scala#scalariform = {
             \ 'exe': 'scalariform',
-            \ 'flags': ['--stdout']
+            \ 'args': ['--stdout']
             \ }
 
 let g:neoformat#enabled#scala = ['scalariform']
@@ -357,7 +357,7 @@ let g:neoformat#enabled#proto = ['clangformat']
 " Crystal
 let g:neoformat#crystal#crystalformat = {
             \ 'exe': 'crystal',
-            \ 'flags': ['tool', 'format'],
+            \ 'args': ['tool', 'format'],
             \ 'replace': 1
             \ }
 
