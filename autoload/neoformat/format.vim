@@ -50,7 +50,7 @@ endfunction
 
 
 function! neoformat#format#BasicFormat() abort
-    echom 'Neoformat: no formatters found for the current filetype'
+    echom 'Neoformat: no formatters found for the filetype'
 
     if !exists('g:neoformat_basic_format_align')
         let g:neoformat_basic_format_align = 0

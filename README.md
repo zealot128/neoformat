@@ -104,7 +104,10 @@ let g:neoformat_read_from_buffer = 0
   - crystal tool format (ships with [crystal](http://crystal-lang.org))
 - CSS
   - css-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify)),
-    [csscomb](http://csscomb.com)
+    [csscomb](http://csscomb.com),
+    [prettydiff](https://github.com/prettydiff/prettydiff)
+- CSV
+  - [prettydiff](https://github.com/prettydiff/prettydiff)
 - D
   - [uncrustify](http://uncrustify.sourceforge.net),
     [dfmt](https://github.com/Hackerpilot/dfmt)
@@ -118,18 +121,22 @@ let g:neoformat_read_from_buffer = 0
 - Haskell
   - [stylish-haskell](https://github.com/jaspervdj/stylish-haskell)
 - HTML
-  - html-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
+  - html-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify)),
+    [prettydiff](https://github.com/prettydiff/prettydiff)
 - Jade
   - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
 - Java
   - [uncrustify](http://uncrustify.sourceforge.net),
     [astyle](http://astyle.sourceforge.net)
 - Javascript
-  - [js-beautify](https://github.com/beautify-web/js-beautify)
+  - [js-beautify](https://github.com/beautify-web/js-beautify),
+    [prettydiff](https://github.com/prettydiff/prettydiff)
 - JSON
-  - [js-beautify](https://github.com/beautify-web/js-beautify)
+  - [js-beautify](https://github.com/beautify-web/js-beautify),
+    [prettydiff](https://github.com/prettydiff/prettydiff)
 - Less
-  - [csscomb](http://csscomb.com)
+  - [csscomb](http://csscomb.com),
+    [prettydiff](https://github.com/prettydiff/prettydiff)
 - Lua
   - [luaformatter](https://github.com/LuaDevelopmentTools/luaformatter)
 - Markdown
@@ -163,7 +170,8 @@ let g:neoformat_read_from_buffer = 0
   - [scalariform](https://github.com/scala-ide/scalariform)
 - SCSS
   - [sass-convert](http://sass-lang.com/documentation/#executables),
-    [csscomb](http://csscomb.com)
+    [csscomb](http://csscomb.com),
+    [prettydiff](https://github.com/prettydiff/prettydiff)
 - SQL
   - sqlformat (ships with [sqlparse](https://github.com/andialbrecht/sqlparse))
 - Typescript
@@ -171,6 +179,8 @@ let g:neoformat_read_from_buffer = 0
 - VALA
   - [uncrustify](http://uncrustify.sourceforge.net)
 - XHTML
-  - [tidy](http://www.html-tidy.org)
+  - [tidy](http://www.html-tidy.org),
+    [prettydiff](https://github.com/prettydiff/prettydiff)
 - XML
-  - [tidy](http://www.html-tidy.org)
+  - [tidy](http://www.html-tidy.org),
+    [prettydiff](https://github.com/prettydiff/prettydiff)

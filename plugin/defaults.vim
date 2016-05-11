@@ -19,7 +19,17 @@ let g:neoformat#javascript#clangformat = {
             \ 'exe': 'clang-format',
             \ }
 
-let g:neoformat#enabled#javascript = ['jsbeautify', 'clangformat']
+let g:neoformat#javascript#prettydiff = {
+            \ 'exe': 'prettydiff',
+            \ 'args': ['mode:"beautify"',
+                     \ 'lang:"javascript"',
+                     \ 'readmethod:"filescreen"',
+                     \ 'endquietly:"quiet"',
+                     \ 'source:"%:p"'],
+            \ 'no_append': 1
+            \ }
+
+let g:neoformat#enabled#javascript = ['jsbeautify', 'clangformat', 'prettydiff']
 
 
 " JSON
@@ -27,19 +37,32 @@ let g:neoformat#json#jsbeautify = {
             \ 'exe': 'js-beautify'
             \ }
 
-let g:neoformat#enabled#json = ['jsbeautify']
+let g:neoformat#json#prettydiff = g:neoformat#javascript#prettydiff
+
+let g:neoformat#enabled#json = ['jsbeautify', 'prettydiff']
 
 " HTML
 let g:neoformat#html#htmlbeautify = {
             \ 'exe': 'html-beautify'
             \ }
+
 let g:neoformat#html#tidy = {
             \ 'exe': 'tidy',
             \ 'args': ['-quiet', '--indent auto', '--indent-spaces 4',
             \           '--vertical-space yes', '--tidy-mark no']
             \ }
 
-let g:neoformat#enabled#html = ['htmlbeautify', 'tidy']
+let g:neoformat#html#prettydiff = {
+            \ 'exe': 'prettydiff',
+            \ 'args': ['mode:"beautify"',
+                     \ 'lang:"html"',
+                     \ 'readmethod:"filescreen"',
+                     \ 'endquietly:"quiet"',
+                     \ 'source:"%:p"'],
+            \ 'no_append': 1
+            \ }
+
+let g:neoformat#enabled#html = ['htmlbeautify', 'tidy', 'prettydiff']
 
 " CSS
 let g:neoformat#css#cssbeautify = {
@@ -51,7 +74,17 @@ let g:neoformat#css#csscomb = {
             \ 'replace': 1
             \ }
 
-let g:neoformat#enabled#css = ['cssbeautify', 'csscomb']
+let g:neoformat#css#prettydiff = {
+            \ 'exe': 'prettydiff',
+            \ 'args': ['mode:"beautify"',
+                     \ 'lang:"css"',
+                     \ 'readmethod:"filescreen"',
+                     \ 'endquietly:"quiet"',
+                     \ 'source:"%:p"'],
+            \ 'no_append': 1
+            \ }
+
+let g:neoformat#enabled#css = ['cssbeautify', 'csscomb', 'prettydiff']
 
 " SCSS
 let g:neoformat#scss#sassconvert = {
@@ -64,7 +97,9 @@ let g:neoformat#scss#csscomb = {
             \ 'replace': 1
             \ }
 
-let g:neoformat#enabled#scss = ['sassconvert', 'csscomb']
+let g:neoformat#scss#prettydiff = g:neoformat#css#prettydiff
+
+let g:neoformat#enabled#scss = ['sassconvert', 'csscomb', 'prettydiff']
 
 " SASS
 let g:neoformat#sass#sassconvert = {
@@ -266,7 +301,9 @@ let g:neoformat#xml#tidy = {
             \           '--vertical-space yes', '--tidy-mark no']
             \ }
 
-let g:neoformat#enabled#xml = ['tidy']
+let g:neoformat#xml#prettydiff = g:neoformat#html#prettydiff
+
+let g:neoformat#enabled#xml = ['tidy', 'prettydiff']
 
 " XHTML
 let g:neoformat#xhtml#tidy = {
@@ -275,7 +312,9 @@ let g:neoformat#xhtml#tidy = {
             \           '--vertical-space yes', '--tidy-mark no']
             \ }
 
-let g:neoformat#enabled#xhtml = ['tidy']
+let g:neoformat#xhtml#prettydiff = g:neoformat#html#prettydiff
+
+let g:neoformat#enabled#xhtml = ['tidy', 'prettydiff']
 
 " Perl
 let g:neoformat#perl#perltidy = {
@@ -369,4 +408,19 @@ let g:neoformat#less#csscomb = {
             \ 'replace': 1
             \ }
 
-let g:neoformat#enabled#less = ['csscomb']
+let g:neoformat#less#prettydiff = g:neoformat#css#prettydiff
+
+let g:neoformat#enabled#less = ['csscomb', 'prettydiff']
+
+" CSV
+let g:neoformat#csv#prettydiff = {
+            \ 'exe': 'prettydiff',
+            \ 'args': ['mode:"beautify"',
+                     \ 'lang:"csv"',
+                     \ 'readmethod:"filescreen"',
+                     \ 'endquietly:"quiet"',
+                     \ 'source:"%:p"'],
+            \ 'no_append': 1
+            \ }
+
+let g:neoformat#enabled#csv = ['prettydiff']
