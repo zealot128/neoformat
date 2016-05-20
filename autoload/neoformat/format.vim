@@ -8,7 +8,8 @@ function! neoformat#format#update_file(job) abort
     endif
 
     if len(data) < 1
-        return neoformat#utils#log('no data was provided by ' . formatter)
+        call neoformat#utils#log('no data was provided by ' . formatter)
+        return neoformat#NextNeoformat()
     endif
 
     let last = len(data) - 1

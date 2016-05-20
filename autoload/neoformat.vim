@@ -20,9 +20,7 @@ function! neoformat#Neoformat(user_cmd) abort
         if a:user_cmd != ''
             return neoformat#utils#log('user cmd did not work. exiting')
         endif
-        call neoformat#utils#log('trying next formatter')
-        let s:current_formatter_index += 1
-        return neoformat#Neoformat('')
+        return neoformat#NextNeoformat()
     endtry
 
     return neoformat#run#Neoformat(cmd)
@@ -57,4 +55,10 @@ function! s:get_definition(user_cmd) abort
         return g:neoformat#{&filetype}#{formatter}
     endif
     throw 'error'
+endfunction
+
+function! neoformat#NextNeoformat() abort
+    call neoformat#utils#log('trying next formatter')
+    let s:current_formatter_index += 1
+    return neoformat#Neoformat('')
 endfunction
