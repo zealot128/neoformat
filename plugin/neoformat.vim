@@ -1,3 +1,3 @@
-command! -nargs=? Neoformat call neoformat#init#Neoformat(0, <q-args>)
+command! -nargs=? -bar Neoformat call neoformat#Neoformat(<q-args>)
 
 autocmd! BufWipeout,BufDelete,BufLeave,BufWinLeave,QuitPre <buffer> call neoformat#run#KillAll()

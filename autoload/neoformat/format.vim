@@ -1,57 +1,54 @@
-function! neoformat#format#UpdateFile(job) abort
-    let l:data           = a:job.stdout
-    let l:formatter_name = a:job.name
+function! neoformat#format#update_file(job) abort
+    let data      = a:job.stdout
+    let filetype  = a:job.filetype
+    let formatter = a:job.name
 
-    if a:job.replace == 1
-        let l:data = readfile(a:job.path)
+    if a:job.replace
+        let data = readfile(a:job.path)
     endif
 
-    if len(l:data) < 1
-        echom 'Neoformat: no data was provided by ' . l:formatter_name
-        return
+    if len(data) < 1
+        return neoformat#utils#log('no data was provided by ' . formatter)
     endif
 
-    let l:last = len(l:data) - 1
-    let l:end  = l:data[l:last]
+    let last = len(data) - 1
+    let end  = data[last]
 
-    " needed for some formatters that add empty new lines at the end of files
+    " needed for some formatters that add two new lines (\n\n) at the end of files
     " ex: remark
-    if l:end ==# ''
-        let l:datalen = len(l:data)
+    if end == ''
+        let datalen = len(data)
     else
-        let l:datalen = len(l:data) + 1
+        let datalen = len(data) + 1
     endif
 
     " cleanup the end of the file
-    while l:datalen <= line('$')
-        call setline(l:datalen, '')
-        let l:datalen += 1
+    while datalen <= line('$')
+        call setline(datalen, '')
+        let datalen += 1
     endwhile
 
-    call neoformat#format#TrimTrailingNewLines()
+    call neoformat#format#trim_trailing_newlines()
 
     " remove extra newlines at the end of formatted file data
-    if l:end ==# ''
-        call remove(l:data, l:last)
+    if end == ''
+        call remove(data, last)
     endif
 
     " ensure file needs to be changed
-    let l:lines = getbufline(bufnr('%'), 1, '$')
-    if l:data ==# l:lines
-        echom 'Neoformat: no change necessary with ' . l:formatter_name
+    let lines = getbufline(bufnr('%'), 1, '$')
+    if data ==# lines
+        echom 'Neoformat: no change necessary with ' . formatter . ' as ' . filetype
         return
     endif
 
     " setline() is used instead of writefile() so that marks, jumps, etc. are kept
-    call setline(1, l:data)
+    call setline(1, data)
 
-    echom 'Neoformat: formatted file with ' . l:formatter_name
+    echom 'Neoformat: formatted file with ' . formatter . ' as ' . filetype
 endfunction
 
-
 function! neoformat#format#BasicFormat() abort
-    echom 'Neoformat: no formatters found for the filetype'
-
     if !exists('g:neoformat_basic_format_align')
         let g:neoformat_basic_format_align = 0
     endif
@@ -65,36 +62,35 @@ function! neoformat#format#BasicFormat() abort
     endif
 
     if g:neoformat_basic_format_align
-        echom 'Neoformat: aligning with basic formatter'
-        let l:v = winsaveview()
+        call neoformat#utils#log('aligning with basic formatter')
+        let v = winsaveview()
         silent! execute 'normal gg=G'
-        call winrestview(l:v)
+        call winrestview(v)
     endif
     if g:neoformat_basic_format_retab
-        echom 'Neoformat: converting tabs with basic formatter'
+        call neoformat#utils#log('converting tabs with basic formatter')
         retab
     endif
     if g:neoformat_basic_format_trim
-        echom 'Neoformat: trimming whitespace with basic formatter'
+        call neoformat#utils#log('trimming whitespace with basic formatter')
         " http://stackoverflow.com/q/356126
-        let l:search = @/
-        let l:view = winsaveview()
+        let search = @/
+        let view = winsaveview()
         " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
         silent! %s/\s\+$//e
         " vint: +ProhibitCommandRelyOnUser +ProhibitCommandWithUnintendedSideEffect
-        let @/=l:search
-        call winrestview(l:view)
+        let @/=search
+        call winrestview(view)
     endif
 endfunction
 
-
-function! neoformat#format#TrimTrailingNewLines() abort
-    let l:search = @/
-    let l:view = winsaveview()
+function! neoformat#format#trim_trailing_newlines() abort
+    let search = @/
+    let view = winsaveview()
     " http://stackoverflow.com/a/7496112/3720597
     " vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
     silent! %s#\($\n\)\+\%$##
     " vint: +ProhibitCommandRelyOnUser +ProhibitCommandWithUnintendedSideEffect
-    let @/=l:search
-    call winrestview(l:view)
+    let @/=search
+    call winrestview(view)
 endfunction

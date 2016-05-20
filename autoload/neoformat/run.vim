@@ -1,74 +1,62 @@
 let s:jobs = {}
 
-" stores the current formatter being used among the formatters defined for the filetype
-let g:neoformat#run#formatterscur = 0
-
 function! neoformat#run#Neoformat(cmd) abort
+    let job = {
+        \ 'stderr':    [],
+        \ 'stdout':    [],
+        \ 'on_stdout': function('s:on_stdout'),
+        \ 'on_stderr': function('s:on_stderr'),
+        \ 'on_exit':   function('s:on_exit'),
+        \ }
 
-    let l:job = {
-                \ 'stderr' : [],
-                \ 'stdout' : [],
-                \ 'on_stdout': function('s:on_stdout'),
-                \ 'on_stderr': function('s:on_stderr'),
-                \ 'on_exit' : function('s:on_exit'),
-                \ }
+    let id = jobstart(a:cmd.exe, job)
 
-    try
-        let l:id = jobstart(a:cmd.exe, l:job)
-    catch
-        echom 'Neoformat: trying next formatter'
-        return neoformat#init#Neoformat(g:neoformat#run#formatterscur + 1, '')
-    endtry
+    let job.id       = id
+    let job.name     = a:cmd.name
+    let job.replace  = a:cmd.replace
+    let job.path     = a:cmd.path
+    let job.filetype = a:cmd.filetype
 
-    let l:job.id      = l:id
-    let l:job.name    = a:cmd.name
-    let l:job.replace = a:cmd.replace
-    let l:job.path    = a:cmd.path
-
-    let s:jobs[l:id] = l:job
+    let s:jobs[id] = job
 endfunction
-
 
 function! s:on_stdout(job_id, data) abort
     if !has_key(s:jobs, a:job_id)
         return
     endif
-    let l:job = s:jobs[a:job_id]
+    let job = s:jobs[a:job_id]
 
-    call extend(l:job.stdout, a:data)
+    call extend(job.stdout, a:data)
 endfunction
-
 
 function! s:on_stderr(job_id, data) abort
     if !has_key(s:jobs, a:job_id)
         return
     endif
-    let l:job = s:jobs[a:job_id]
+    let job = s:jobs[a:job_id]
 
-    call extend(l:job.stderr, a:data)
+    call extend(job.stderr, a:data)
 endfunction
-
 
 function! s:on_exit(job_id, data) abort
     if !has_key(s:jobs, a:job_id)
         return
     endif
-    let l:job = s:jobs[a:job_id]
+    let job = s:jobs[a:job_id]
 
-    call neoformat#format#UpdateFile(l:job)
+    call neoformat#format#update_file(job)
 
     unlet s:jobs[a:job_id]
 endfunction
-
 
 function! neoformat#run#KillAll() abort
     if empty(s:jobs)
         return
     endif
 
-    for l:id in keys(s:jobs)
-        if l:id > 0
-            silent! call jobstop(l:id)
+    for id in keys(s:jobs)
+        if id > 0
+            silent! call jobstop(id)
         endif
     endfor
 

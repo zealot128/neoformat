@@ -32,14 +32,41 @@ USAGE						*neoformat-usage* *Neoformat*
 Format the current file using its filetype
 >
 	:Neoformat
-<
-Specify a filetype
+<Or specify a certain formatter (must be defined for the current filetype)
 >
-	:Neoformat python
+	:Neoformat js-beautify
 <
-Or specify a certain formatter
+==============================================================================
+CONFIG						*neoformat-config*
+
+Define custom formatters.
 >
-	:Neoformat javascript/js-beautify
+    let g:neoformat_python_autopep8 = {
+		\ 'exe': 'autopep8'
+		\ }
+
+    let g:neoformat_enabled_python = ['autopep8']
+<
+Enable basic formatting when a filetype is not found. Disabled by default.
+>
+    " Enable alignment
+    let g:neoformat_basic_format_align = 1
+
+    " Enable tab to spaces conversion
+    let g:neoformat_basic_format_retab = 1
+
+    " Enable trimmming of trailing whitespace
+    let g:neoformat_basic_format_trim = 1
+<
+Make Neoformat read from the file instead of the buffer.
+>
+    let g:neoformat_read_from_buffer = 0
+<
+When debugging, you can enable either of following variables for extra logging.
+>
+    let g:neoformat_verbose = 1 " only affects the verbosity of Neoformat
+    " Or
+    let &verbose            = 1 " also increases verbosity of the editor as a whole
 <
 ==============================================================================
 SUPPORTED FILETYPES				*neoformat-supported-filetypes*

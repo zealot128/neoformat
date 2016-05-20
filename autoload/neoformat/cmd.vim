@@ -1,73 +1,60 @@
-function! neoformat#cmd#Generate(definition) abort
-    if has_key(a:definition, 'exe')
-        let l:cmd = get(a:definition, 'exe')
-        if !executable(l:cmd)
-            echom 'Neoformat: executable ' . l:cmd . ' not found'
-            return {}
-        endif
-    else
-        echom 'Neoformat: `exe` was not found in formatter definition'
-        return {}
+function! neoformat#cmd#generate(definition) abort
+    let cmd = get(a:definition, 'exe', '')
+    if cmd == ''
+        call neoformat#utils#log('no exe field in definition')
+        throw 'error'
+    endif
+    if !executable(cmd)
+        call neoformat#utils#log('cmd: ' . cmd . ' is not an executable')
+        throw 'error'
     endif
 
-
-
-    let l:args = []
-    if has_key(a:definition, 'args')
-        let l:args = get(a:definition, 'args')
-    endif
-    let l:args_expanded = []
-    for l:a in l:args
-        let l:args_expanded = add(l:args_expanded, s:expand_fully(l:a))
+    let args = get(a:definition, 'args', [])
+    let args_expanded = []
+    for a in args
+        let args_expanded = add(args_expanded, s:expand_fully(a))
     endfor
 
-    let l:replace = 0
-    if has_key(a:definition, 'replace')
-        let l:replace = get(a:definition, 'replace')
-    endif
-
-    let l:no_append = 0
-    if has_key(a:definition, 'no_append')
-        let l:no_append = get(a:definition, 'no_append')
-    endif
+    let replace   = get(a:definition, 'replace')
+    let no_append = get(a:definition, 'no_append')
 
     if !exists('g:neoformat_read_from_buffer')
         let g:neoformat_read_from_buffer = 1
     endif
 
-    if isdirectory('/tmp/') && g:neoformat_read_from_buffer == 1
+    if isdirectory('/tmp/') && g:neoformat_read_from_buffer
         if !isdirectory('/tmp/neoformat/')
             call mkdir('/tmp/neoformat/')
         endif
 
         " get the last path component, the filename
-        let l:filename = expand('%:t')
-        let l:path = '/tmp/neoformat/' . fnameescape(l:filename)
-        let l:data     = getbufline(bufnr('%'), 1, '$')
-        call writefile(l:data, l:path)
+        let filename = expand('%:t')
+        let path     = '/tmp/neoformat/' . fnameescape(filename)
+        let data     = getbufline(bufnr('%'), 1, '$')
+        call writefile(data, path)
     else
         " /Users/sloth/documents/example.vim
-        let l:path = fnameescape(expand('%:p'))
+        let path = fnameescape(expand('%:p'))
     endif
 
-    if l:no_append
-        let l:path = ''
+    if no_append
+        let path = ''
     endif
 
-    let l:_fullcmd = l:cmd . ' ' . join(l:args_expanded) . ' ' . l:path
+    let _fullcmd = cmd . ' ' . join(args_expanded) . ' ' . path
     " make sure there aren't any double spaces in the cmd
-    let l:fullcmd = join(split(l:_fullcmd))
+    let fullcmd = join(split(_fullcmd))
 
     return {
-        \ 'exe':       l:fullcmd,
+        \ 'exe':       fullcmd,
         \ 'name':      a:definition.exe,
-        \ 'no_append': l:no_append,
-        \ 'path':      l:path,
-        \ 'replace':   l:replace
+        \ 'no_append': no_append,
+        \ 'path':      path,
+        \ 'replace':   replace,
+        \ 'filetype':  &filetype
         \ }
 endfunction
 
 function! s:expand_fully(string) abort
-    return substitute(a:string, '%\(:[a-z]\)*',
-                            \ '\=expand(submatch(0))', 'g')
+    return substitute(a:string, '%\(:[a-z]\)*', '\=expand(submatch(0))', 'g')
 endfunction

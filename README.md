@@ -17,16 +17,10 @@ Format the current file using its filetype
 :Neoformat
 ```
 
-Specify a filetype
+Or specify a certain formatter (must be defined for the current filetype)
 
 ```viml
-:Neoformat python
-```
-
-Or specify a certain formatter
-
-```viml
-:Neoformat javascript/js-beautify
+:Neoformat js-beautify
 ```
 
 ## Install
@@ -81,6 +75,14 @@ Make Neoformat read from the file instead of the buffer.
 
 ```viml
 let g:neoformat_read_from_buffer = 0
+```
+
+When debugging, you can enable either of following variables for extra logging.
+
+```viml
+let g:neoformat_verbose = 1 " only affects the verbosity of Neoformat
+" Or
+let &verbose            = 1 " also increases verbosity of the editor as a whole
 ```
 
 ## Supported Filetypes
