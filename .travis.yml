@@ -1,0 +1,10 @@
+language: python
+
+cache:
+    - pip
+
+install:
+    - sudo pip install vim-vint
+
+script:
+    - bash test/test.sh;

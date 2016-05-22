@@ -229,7 +229,9 @@ let g:neoformat#objc#clangformat = {
             \ 'exe': 'clang-format',
             \ }
 
-let g:neoformat#enabled#objc = ['uncrustify', 'clangformat']
+let g:neoformat#java#astyle = g:neoformat#c#astyle
+
+let g:neoformat#enabled#objc = ['uncrustify', 'clangformat', 'astyle']
 
 " D
 let g:neoformat#d#dfmt = {

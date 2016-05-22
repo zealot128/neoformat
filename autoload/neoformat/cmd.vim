@@ -2,11 +2,11 @@ function! neoformat#cmd#generate(definition) abort
     let cmd = get(a:definition, 'exe', '')
     if cmd == ''
         call neoformat#utils#log('no exe field in definition')
-        throw 'error'
+        return {}
     endif
     if !executable(cmd)
         call neoformat#utils#log('cmd: ' . cmd . ' is not an executable')
-        throw 'error'
+        return {}
     endif
 
     let args = get(a:definition, 'args', [])

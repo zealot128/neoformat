@@ -146,6 +146,7 @@ let &verbose            = 1 " also increases verbosity of the editor as a whole
 - Objective-C
   - [`uncrustify`](http://uncrustify.sourceforge.net),
     [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html)
+    [`astyle`](http://astyle.sourceforge.net)
 - OCaml
   - [`ocp-indent`](http://www.typerex.org/ocp-indent.html)
 - Pawn

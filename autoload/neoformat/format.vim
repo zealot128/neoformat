@@ -39,17 +39,17 @@ function! neoformat#format#update_file(job) abort
     " ensure file needs to be changed
     let lines = getbufline(bufnr('%'), 1, '$')
     if data ==# lines
-        echom 'Neoformat: no change necessary with ' . formatter . ' as ' . filetype
-        return
+        return neoformat#utils#msg('no change necessary with ' . formatter . ' as ' . filetype)
     endif
 
     " setline() is used instead of writefile() so that marks, jumps, etc. are kept
     call setline(1, data)
 
-    echom 'Neoformat: formatted file with ' . formatter . ' as ' . filetype
+    return neoformat#utils#msg('formatted file with ' . formatter . ' as ' . filetype)
 endfunction
 
 function! neoformat#format#BasicFormat() abort
+    call neoformat#utils#log('running basic format')
     if !exists('g:neoformat_basic_format_align')
         let g:neoformat_basic_format_align = 0
     endif
