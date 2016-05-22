@@ -1,4 +1,4 @@
-# Neoformat
+# Neoformat [![Build Status](https://travis-ci.org/sbdchd/neoformat.svg?branch=master)](https://travis-ci.org/sbdchd/neoformat)
 
 A [Neovim](https://neovim.io) plugin for formatting code.
 
