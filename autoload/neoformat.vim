@@ -10,7 +10,7 @@ function! neoformat#Neoformat(user_formatter) abort
     else
         let formatters = s:get_enabled_formatters(&filetype)
         if formatters == []
-            call neoformat#utils#msg('no formatter defined for the ' . &filetype . ' filetype')
+            call neoformat#utils#msg('formatter not defined for ' . &filetype . ' filetype')
             return neoformat#format#BasicFormat()
         endif
 
@@ -27,7 +27,7 @@ function! neoformat#Neoformat(user_formatter) abort
     elseif exists('g:neoformat#' . &filetype . '#' . formatter)
         let definition =  g:neoformat#{&filetype}#{formatter}
     else
-        call neoformat#utils#log('no definition found for formatter: ' . formatter)
+        call neoformat#utils#log('definition not found for formatter: ' . formatter)
         if !empty(a:user_formatter)
             call neoformat#utils#msg('formatter definition for ' . a:user_formatter . ' not found')
             return neoformat#format#BasicFormat()

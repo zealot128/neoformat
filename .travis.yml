@@ -7,4 +7,4 @@ install:
     - sudo pip install vim-vint
 
 script:
-    - bash test/test.sh;
+    - bash test/test.sh

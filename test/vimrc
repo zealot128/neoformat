@@ -1,0 +1,6 @@
+filetype off
+set runtimepath+=$HOME/.vim/plugged/vader.vim
+set runtimepath+=../
+filetype plugin indent on
+syntax enable
+set nocompatible
