@@ -24,8 +24,8 @@ function! neoformat#Neoformat(user_formatter) abort
 
     if exists('g:neoformat_' . &filetype . '_' . formatter)
         let definition = g:neoformat_{&filetype}_{formatter}
-    elseif exists('g:neoformat#' . &filetype . '#' . formatter)
-        let definition =  g:neoformat#{&filetype}#{formatter}
+    elseif s:autoload_func_exists('neoformat#formatters#' . &filetype . '#' . formatter)
+        let definition =  neoformat#formatters#{&filetype}#{formatter}()
     else
         call neoformat#utils#log('definition not found for formatter: ' . formatter)
         if !empty(a:user_formatter)
@@ -49,8 +49,8 @@ endfunction
 function! s:get_enabled_formatters(filetype) abort
     if exists('g:neoformat_enabled_' . a:filetype)
         return g:neoformat_enabled_{a:filetype}
-    elseif exists('g:neoformat#enabled#' . a:filetype)
-        return g:neoformat#enabled#{a:filetype}
+    elseif s:autoload_func_exists('neoformat#formatters#' . a:filetype . '#enabled')
+        return neoformat#formatters#{a:filetype}#enabled()
     endif
     return []
 endfunction
@@ -67,4 +67,13 @@ function! neoformat#NextNeoformat() abort
     call neoformat#utils#log('trying next formatter')
     let s:current_formatter_index += 1
     return neoformat#Neoformat('')
+endfunction
+
+function! s:autoload_func_exists(func_name)
+    try
+        call eval(a:func_name . '()')
+    catch /^Vim\%((\a\+)\)\=:E117/
+        return 0
+    endtry
+    return 1
 endfunction
