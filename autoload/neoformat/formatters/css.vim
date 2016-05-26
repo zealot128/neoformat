@@ -1,5 +1,5 @@
 function! neoformat#formatters#css#enabled()
-    return ['cssbeautify', 'csscomb', 'prettydiff']
+    return ['cssbeautify', 'prettydiff', 'stylefmt', 'csscomb']
 endfunction
 
 function! neoformat#formatters#css#cssbeautify()
@@ -23,4 +23,11 @@ function! neoformat#formatters#css#prettydiff()
                      \ 'source:"%:p"'],
             \ 'no_append': 1
             \ }
+endfunction
+
+function! neoformat#formatters#css#stylefmt()
+    return {
+        \ 'exe': 'stylefmt',
+        \ 'replace': 1
+        \ }
 endfunction

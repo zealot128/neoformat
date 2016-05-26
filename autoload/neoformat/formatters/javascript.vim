@@ -1,5 +1,5 @@
 function! neoformat#formatters#javascript#enabled()
-    return ['jsbeautify', 'clangformat', 'prettydiff']
+    return ['jsbeautify', 'prettydiff', 'clangformat', 'esformatter']
 endfunction
 
 function! neoformat#formatters#javascript#jsbeautify()
@@ -19,5 +19,11 @@ function! neoformat#formatters#javascript#prettydiff()
                  \ 'endquietly:"quiet"',
                  \ 'source:"%:p"'],
         \ 'no_append': 1
+        \ }
+endfunction
+
+function! neoformat#formatters#javascript#esformatter()
+    return {
+        \ 'exe': 'esformatter'
         \ }
 endfunction

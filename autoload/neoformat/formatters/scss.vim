@@ -1,5 +1,5 @@
 function! neoformat#formatters#scss#enabled()
-   return ['sassconvert', 'csscomb', 'prettydiff']
+   return ['sassconvert', 'stylefmt', 'prettydiff', 'csscomb']
 endfunction
 
 function! neoformat#formatters#scss#sassconvert()
@@ -15,4 +15,8 @@ endfunction
 
 function! neoformat#formatters#scss#prettydiff()
     return neoformat#formatters#css#prettydiff()
+endfunction
+
+function! neoformat#formatters#scss#stylefmt()
+    return neoformat#formatters#css#stylefmt()
 endfunction

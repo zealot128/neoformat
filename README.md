@@ -106,8 +106,9 @@ let &verbose            = 1 " also increases verbosity of the editor as a whole
   - `crystal tool format` (ships with [`crystal`](http://crystal-lang.org))
 - CSS
   - `css-beautify` (ships with [`js-beautify`](https://github.com/beautify-web/js-beautify)),
-    [`csscomb`](http://csscomb.com),
     [`prettydiff`](https://github.com/prettydiff/prettydiff)
+    [`stylefmt`](https://github.com/morishitter/stylefmt)
+    [`csscomb`](http://csscomb.com),
 - CSV
   - [`prettydiff`](https://github.com/prettydiff/prettydiff)
 - D
@@ -133,6 +134,8 @@ let &verbose            = 1 " also increases verbosity of the editor as a whole
 - Javascript
   - [`js-beautify`](https://github.com/beautify-web/js-beautify),
     [`prettydiff`](https://github.com/prettydiff/prettydiff)
+    [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html)
+    ['esformatter'](https://github.com/millermedeiros/esformatter/)
 - JSON
   - [`js-beautify`](https://github.com/beautify-web/js-beautify),
     [`prettydiff`](https://github.com/prettydiff/prettydiff)
@@ -173,8 +176,9 @@ let &verbose            = 1 " also increases verbosity of the editor as a whole
   - [`scalariform`](https://github.com/scala-ide/scalariform)
 - SCSS
   - [`sass-convert`](http://sass-lang.com/documentation/#executables),
-    [`csscomb`](http://csscomb.com),
+    [`stylefmt`](https://github.com/morishitter/stylefmt)
     [`prettydiff`](https://github.com/prettydiff/prettydiff)
+    [`csscomb`](http://csscomb.com),
 - SQL
   - `sqlformat` (ships with [sqlparse](https://github.com/andialbrecht/sqlparse))
 - Typescript
