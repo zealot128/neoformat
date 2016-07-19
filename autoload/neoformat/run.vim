@@ -1,23 +1,37 @@
 let s:jobs = {}
 
+function! s:job_id(job)
+    " 8 is the type Job
+    if type(a:job) == 8
+        let i = job_getchannel(a:job)
+    else
+        let i = a:job
+    endif
+    return split(i)[1]
+endfunction
+
 function! neoformat#run#Neoformat(cmd) abort
-    let job = {
-        \ 'stderr':    [],
-        \ 'stdout':    [],
-        \ 'on_stdout': function('s:on_stdout'),
-        \ 'on_stderr': function('s:on_stderr'),
-        \ 'on_exit':   function('s:on_exit'),
-        \ }
 
-    let id = jobstart(a:cmd.exe, job)
+    if has('nvim')
+        let id = jobstart(a:cmd.exe, {
+            \ 'on_stdout': function('s:on_stdout'),
+            \ 'on_exit':   function('s:on_exit'),
+            \ })
+    else
+        let id = s:job_id(job_start(a:cmd.exe, {
+          \ 'out_cb': function('s:on_stdout_vim'),
+          \ })
+          \ )
+    endif
 
-    let job.id       = id
+    let job          = {}
+    let job.stdout   = []
     let job.name     = a:cmd.name
     let job.replace  = a:cmd.replace
     let job.path     = a:cmd.path
     let job.filetype = a:cmd.filetype
 
-    let s:jobs[id] = job
+    let s:jobs[id]   = job
 endfunction
 
 function! s:on_stdout(job_id, data) abort
@@ -29,13 +43,20 @@ function! s:on_stdout(job_id, data) abort
     call extend(job.stdout, a:data)
 endfunction
 
-function! s:on_stderr(job_id, data) abort
-    if !has_key(s:jobs, a:job_id)
+function! s:on_stdout_vim(job, data)
+    let id = s:job_id(a:job)
+
+    if !has_key(s:jobs, id)
         return
     endif
-    let job = s:jobs[a:job_id]
 
-    call extend(job.stderr, a:data)
+    let job = s:jobs[id]
+
+    if a:data == 'DETACH'
+        return s:on_exit(id, job.stdout)
+    endif
+
+    call extend(job.stdout, [a:data])
 endfunction
 
 function! s:on_exit(job_id, data) abort

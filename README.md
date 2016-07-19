@@ -58,6 +58,12 @@ let g:neoformat_python_autopep8 = {
 let g:neoformat_enabled_python = ['autopep8']
 ```
 
+Configure enabled formatters.
+
+```viml
+let g:neoformat_enabled_python = ['autopep8', 'yapf']
+```
+
 Enable basic formatting when a filetype is not found. Disabled by default.
 
 ```viml

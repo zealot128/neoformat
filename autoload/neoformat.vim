@@ -1,8 +1,12 @@
-let s:current_formatter_index = 0
+function! neoformat#Start(user_formatter)
+    let s:current_formatter_index = 0
+    call neoformat#Neoformat(a:user_formatter)
+endfunction
 
 function! neoformat#Neoformat(user_formatter) abort
-    if !has('nvim')
-        return neoformat#utils#warn('Neovim is currently required to run this plugin')
+    let s:vim_jobcontrol = !has('nvim') && has('job') && has('patch-7-4-1590')
+    if !(has('nvim') || s:vim_jobcontrol)
+        return neoformat#utils#warn('Neovim, or Vim with job control, is currently required to run this plugin')
     endif
 
     if !empty(a:user_formatter)
