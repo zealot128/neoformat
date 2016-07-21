@@ -1,6 +1,6 @@
 # Neoformat [![Build Status](https://travis-ci.org/sbdchd/neoformat.svg?branch=master)](https://travis-ci.org/sbdchd/neoformat)
 
-A [Neovim](https://neovim.io) plugin for formatting code.
+A [Neovim](https://neovim.io) plugin for formatting code, with preliminary support for Vim.
 
 Neoformat uses a variety of formatters for differing filetypes. Currently, Neoformat
 will run a formatter _asynchronously_, and on success it will update the current
@@ -45,6 +45,8 @@ Note: This should be resolved when [`setbufline()`](https://github.com/vim/vim/b
 
 By default, Neoformat reads from the current buffer, not the current file. This
 can be changed via the configuration variable `g:neoformat_read_from_buffer`.
+
+With Vim, some of the formatters do not function, e.g. remark.
 
 ## Config [Optional]
 
