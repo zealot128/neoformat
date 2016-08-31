@@ -4,6 +4,7 @@ endfunction
 
 function! neoformat#formatters#pug#pugbeautifier()
     return {
-        \ 'exe': 'pug-beautifier'
+        \ 'exe': 'pug-beautifier',
+        \ 'args': ['-s 2']
         \ }
 endfunction
