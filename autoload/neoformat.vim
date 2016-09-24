@@ -12,9 +12,10 @@ function! neoformat#Neoformat(user_formatter) abort
     if !empty(a:user_formatter)
         let formatter = a:user_formatter
     else
-        let formatters = s:get_enabled_formatters(&filetype)
+        let filetype = s:split_filetypes(&filetype)
+        let formatters = s:get_enabled_formatters(filetype)
         if formatters == []
-            call neoformat#utils#msg('formatter not defined for ' . &filetype . ' filetype')
+            call neoformat#utils#msg('formatter not defined for ' . filetype . ' filetype')
             return neoformat#format#BasicFormat()
         endif
 
@@ -26,10 +27,10 @@ function! neoformat#Neoformat(user_formatter) abort
         let formatter = formatters[s:current_formatter_index]
     endif
 
-    if exists('g:neoformat_' . &filetype . '_' . formatter)
-        let definition = g:neoformat_{&filetype}_{formatter}
-    elseif s:autoload_func_exists('neoformat#formatters#' . &filetype . '#' . formatter)
-        let definition =  neoformat#formatters#{&filetype}#{formatter}()
+    if exists('g:neoformat_' . filetype . '_' . formatter)
+        let definition = g:neoformat_{filetype}_{formatter}
+    elseif s:autoload_func_exists('neoformat#formatters#' . filetype . '#' . formatter)
+        let definition =  neoformat#formatters#{filetype}#{formatter}()
     else
         call neoformat#utils#log('definition not found for formatter: ' . formatter)
         if !empty(a:user_formatter)
@@ -39,7 +40,7 @@ function! neoformat#Neoformat(user_formatter) abort
         return neoformat#NextNeoformat()
     endif
 
-    let cmd = neoformat#cmd#generate(definition)
+    let cmd = neoformat#cmd#generate(definition, filetype)
     if cmd == {}
         if !empty(a:user_formatter)
             return neoformat#utils#log('user specified formatter failed')
@@ -63,7 +64,8 @@ function! neoformat#CompleteFormatters(ArgLead, CmdLine, CursorPos)
     if a:ArgLead =~ '[^A-Za-z0-9]'
         return []
     endif
-    return filter(s:get_enabled_formatters(&filetype),
+    let filetype = s:split_filetypes(&filetype)
+    return filter(s:get_enabled_formatters(filetype),
                 \ "v:val =~? '^" . a:ArgLead ."'")
 endfunction
 
@@ -80,4 +82,8 @@ function! s:autoload_func_exists(func_name)
         return 0
     endtry
     return 1
+endfunction
+
+function! s:split_filetypes(filetype)
+    return split(a:filetype, '\.')[0]
 endfunction

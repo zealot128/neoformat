@@ -1,4 +1,4 @@
-function! neoformat#cmd#generate(definition) abort
+function! neoformat#cmd#generate(definition, filetype) abort
     let cmd = get(a:definition, 'exe', '')
     if cmd == ''
         call neoformat#utils#log('no exe field in definition')
@@ -51,7 +51,7 @@ function! neoformat#cmd#generate(definition) abort
         \ 'no_append': no_append,
         \ 'path':      path,
         \ 'replace':   replace,
-        \ 'filetype':  &filetype
+        \ 'filetype':  a:filetype
         \ }
 endfunction
 
