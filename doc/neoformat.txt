@@ -13,9 +13,9 @@ Supported Filetypes	|neoformat-supported-filetypes|
 INTRODUCTION					*neoformat-introduction*
 
 *neoformat* uses a variety of formatters for differing filetypes.
-Currently, *neoformat* will run a formatter asynchronously, and on success it
+Currently, neoformat will run a formatter asynchronously, and on success it
 will update the current buffer with the formatted text. On a formatter failure,
-*neoformat* will try the next formatter defined for the filetype.
+neoformat will try the next formatter defined for the filetype.
 
 The job control is based off of vim-go's.
 
