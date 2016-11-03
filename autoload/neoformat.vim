@@ -85,5 +85,8 @@ function! s:autoload_func_exists(func_name)
 endfunction
 
 function! s:split_filetypes(filetype)
+    if a:filetype == ''
+        return ''
+    endif
     return split(a:filetype, '\.')[0]
 endfunction
