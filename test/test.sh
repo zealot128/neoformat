@@ -10,7 +10,7 @@ fi
 
 # Vint
 if ! hash vint 2>/dev/null; then
-    pip install vint
+    pip install vim-vint
 fi
 vint .
 
