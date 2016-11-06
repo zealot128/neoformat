@@ -151,6 +151,8 @@ SUPPORTED FILETYPES				*neoformat-supported-filetypes*
 - SCSS
   - [sass-convert](http://sass-lang.com/documentation/#executables),
     [csscomb](http://csscomb.com)
+- Shell
+  - [shfmt](https://github.com/mvdan/sh)
 - SQL
   - sqlformat (ships with [sqlparse](https://github.com/andialbrecht/sqlparse))
 - Typescript

@@ -187,6 +187,8 @@ let &verbose            = 1 " also increases verbosity of the editor as a whole
     [`stylefmt`](https://github.com/morishitter/stylefmt),
     [`prettydiff`](https://github.com/prettydiff/prettydiff),
     [`csscomb`](http://csscomb.com)
+- Shell
+  - [`shfmt`](https://github.com/mvdan/sh)
 - SQL
   - `sqlformat` (ships with [sqlparse](https://github.com/andialbrecht/sqlparse))
 - Typescript
