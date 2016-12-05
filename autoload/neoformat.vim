@@ -9,6 +9,10 @@ function! neoformat#Neoformat(user_formatter) abort
         return neoformat#utils#warn('Neovim, or Vim with job control, is currently required to run this plugin')
     endif
 
+    if !&modifiable
+        return neoformat#utils#warn('buffer not modifiable')
+    endif
+
     if !empty(a:user_formatter)
         let formatter = a:user_formatter
     else
@@ -47,6 +51,8 @@ function! neoformat#Neoformat(user_formatter) abort
         endif
         return neoformat#NextNeoformat()
     endif
+
+    call neoformat#utils#log(cmd)
 
     return neoformat#run#Neoformat(cmd)
 endfunction
