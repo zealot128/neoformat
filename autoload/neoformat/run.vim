@@ -18,8 +18,10 @@ function! neoformat#run#Neoformat(cmd) abort
             \ 'on_exit':   function('s:on_exit'),
             \ })
     else
+        call neoformat#utils#log('using vim stuff')
         let id = s:job_id(job_start(a:cmd.exe, {
           \ 'out_cb': function('s:on_stdout_vim'),
+          \ 'exit_cb': function('s:on_exit_vim'),
           \ })
           \ )
     endif
@@ -43,21 +45,19 @@ function! s:on_stdout(job_id, data, event) abort
     call extend(job.stdout, a:data)
 endfunction
 
-function! s:on_stdout_vim(job, data, event) abort
+function! s:on_stdout_vim(job, data) abort
     let id = s:job_id(a:job)
-
-    if !has_key(s:jobs, id)
-        return
-    endif
-
-    let job = s:jobs[id]
-
-    if a:data == 'DETACH'
-        return s:on_exit(id, job.stdout, a:event)
-    endif
-
-    call extend(job.stdout, [a:data])
+    " passing an empty string to on_exit as vim jobs don't use a third
+    " argument
+    call s:on_stdout(id, [a:data], '')
 endfunction
+
+
+function! s:on_exit_vim(job, data) abort
+    let id = s:job_id(a:job)
+    call s:on_exit(id, a:data, '')
+endfunction
+
 
 function! s:on_exit(job_id, data, event) abort
     if !has_key(s:jobs, a:job_id)
