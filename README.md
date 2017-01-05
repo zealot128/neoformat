@@ -1,6 +1,6 @@
 # Neoformat [![Build Status](https://travis-ci.org/sbdchd/neoformat.svg?branch=master)](https://travis-ci.org/sbdchd/neoformat)
 
-A [Neovim](https://neovim.io) plugin for formatting code, with preliminary support for Vim.
+A [Neovim](https://neovim.io) and Vim8 plugin for formatting code.
 
 Neoformat uses a variety of formatters for differing filetypes. Currently, Neoformat
 will run a formatter _asynchronously_, and on success it will update the current
@@ -161,7 +161,7 @@ let &verbose            = 1 " also increases verbosity of the editor as a whole
 - OCaml
   - [`ocp-indent`](http://www.typerex.org/ocp-indent.html)
 - Pandoc Markdown
-  - [`pandoc`][https://pandoc.org/MANUAL.html]
+  - [`pandoc`](https://pandoc.org/MANUAL.html)
 - Pawn
   - [`uncrustify`](http://uncrustify.sourceforge.net)
 - Perl
