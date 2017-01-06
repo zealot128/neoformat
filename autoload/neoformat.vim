@@ -20,7 +20,7 @@ function! neoformat#Neoformat(user_formatter) abort
         endif
 
         if s:current_formatter_index >= len(formatters)
-            call neoformat#utils#msg('attempted all formatters available for current filetype')
+            call neoformat#utils#msg('attempted all formatters available for ' . filetype)
             return s:basic_format()
         endif
 
@@ -145,14 +145,17 @@ function! s:generate_cmd(definition, filetype) abort
         let args_expanded = add(args_expanded, s:expand_fully(a))
     endfor
 
-    let replace   = get(a:definition, 'replace')
-    let no_append = get(a:definition, 'no_append')
+    let replace   = get(a:definition, 'replace', 0)
+    let no_append = get(a:definition, 'no_append', 0)
+    let using_stdin = get(a:definition, 'stdin', 0)
+    let filter = get(a:definition, 'filter', '')
 
     if !exists('g:neoformat_read_from_buffer')
         let g:neoformat_read_from_buffer = 1
     endif
 
-    if isdirectory('/tmp/') && g:neoformat_read_from_buffer
+    " 1. create temp file from buffer data
+    if isdirectory('/tmp/') && g:neoformat_read_from_buffer && !using_stdin
         if !isdirectory('/tmp/neoformat/')
             call mkdir('/tmp/neoformat/')
         endif
@@ -162,17 +165,16 @@ function! s:generate_cmd(definition, filetype) abort
         let path     = '/tmp/neoformat/' . fnameescape(filename)
         let data     = getbufline(bufnr('%'), 1, '$')
         call writefile(data, path)
-    else
+    " 2. read from file instead of buffer
+    elseif !using_stdin && replace == 1
         " /Users/sloth/documents/example.vim
         let path = fnameescape(expand('%:p'))
-    endif
-
-    let using_stdin = get(a:definition, 'stdin', 0)
-    if no_append || using_stdin
+    " 3. no path, using either stdin or no_append
+    else
         let path = ''
     endif
 
-    let _fullcmd = cmd . ' ' . join(args_expanded) . ' ' . path
+    let _fullcmd = cmd . ' ' . filter . ' ' . join(args_expanded) . ' ' . path
     " make sure there aren't any double spaces in the cmd
     let fullcmd = join(split(_fullcmd))
 
@@ -180,10 +182,6 @@ function! s:generate_cmd(definition, filetype) abort
         \ 'exe':       fullcmd,
         \ 'stdin':     using_stdin,
         \ 'name':      a:definition.exe,
-        \ 'no_append': no_append,
-        \ 'path':      path,
-        \ 'replace':   replace,
-        \ 'filetype':  a:filetype
         \ }
 endfunction
 
