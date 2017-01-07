@@ -65,7 +65,6 @@ Options:
 | `replace`   | overwrite the file, instead of updating the buffer                                                                 | 0       | optional            |
 | `stdin`     | send data to the stdin of the formatter                                                                            | 0       | optional            |
 | `no_append` | do not append the `path` of the file to the formatter command, used when the `path` is in the middle of a command  | 0       | optional            |
-| `filter`    | a filter to send formatter data through e.g. `2>/dev/null` (used when formatter doesn't send correct status codes) | ''      | optional            |
 
 Example:
 

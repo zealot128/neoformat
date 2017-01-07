@@ -148,7 +148,6 @@ function! s:generate_cmd(definition, filetype) abort
     let replace   = get(a:definition, 'replace', 0)
     let no_append = get(a:definition, 'no_append', 0)
     let using_stdin = get(a:definition, 'stdin', 0)
-    let filter = get(a:definition, 'filter', '')
 
     if !exists('g:neoformat_read_from_buffer')
         let g:neoformat_read_from_buffer = 1
@@ -174,7 +173,7 @@ function! s:generate_cmd(definition, filetype) abort
         let path = ''
     endif
 
-    let _fullcmd = cmd . ' ' . join(args_expanded) . ' ' . filter . ' ' . path
+    let _fullcmd = cmd . ' ' . join(args_expanded) . ' ' . path
     " make sure there aren't any double spaces in the cmd
     let fullcmd = join(split(_fullcmd))
 
