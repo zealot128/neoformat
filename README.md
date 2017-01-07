@@ -29,6 +29,15 @@ Or specify a certain formatter (must be defined for the current filetype)
 :Neoformat js-beautify
 ```
 
+Or perhaps run a formatter on save
+
+```viml
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * Neoformat
+augroup END
+```
+
 ## Install
 
 [vim-plug](https://github.com/junegunn/vim-plug)

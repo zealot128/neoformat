@@ -43,6 +43,16 @@ Format the current file using its filetype
 >
 	:Neoformat js-beautify
 
+Or perhaps run a formatter on save
+
+>
+    augroup fmt
+      autocmd!
+      autocmd BufWritePre * Neoformat
+    augroup END
+<
+
+
 ==============================================================================
 CURRENT LIMITATION(S)				*neoformat-limitations*
 
