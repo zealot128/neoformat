@@ -12,7 +12,7 @@ function! neoformat#formatters#pandoc#pandoc() abort
             \ '--wrap=auto',
             \ '--atx-headers',
             \ '|',
-            \ "sed -e 's/\\\[/[/g'", "-e 's/\\\]/]/g'",],
+            \ "sed -e 's/\\\\\\[/[/g'", "-e 's/\\\\\\]/]/g'",],
             \ 'stdin': 1,
             \ }
 endfunction

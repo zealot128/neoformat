@@ -174,7 +174,7 @@ function! s:generate_cmd(definition, filetype) abort
         let path = ''
     endif
 
-    let _fullcmd = cmd . ' ' . filter . ' ' . join(args_expanded) . ' ' . path
+    let _fullcmd = cmd . ' ' . join(args_expanded) . ' ' . filter . ' ' . path
     " make sure there aren't any double spaces in the cmd
     let fullcmd = join(split(_fullcmd))
 
