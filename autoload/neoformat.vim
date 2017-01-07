@@ -54,6 +54,12 @@ function! neoformat#Neoformat(user_formatter) abort
     else
         let stdout = systemlist(cmd.exe)
     endif
+
+    " read from /tmp file if formatter replaces file on format
+    if cmd.replace == 1
+        let stdout = readfile(cmd.tmp_file_path)
+    endif
+
     call neoformat#utils#log(stdin)
     call neoformat#utils#log(stdout)
     if v:shell_error == 0
@@ -129,13 +135,13 @@ function! s:split_filetypes(filetype) abort
 endfunction
 
 function! s:generate_cmd(definition, filetype) abort
-    let cmd = get(a:definition, 'exe', '')
-    if cmd == ''
+    let executable = get(a:definition, 'exe', '')
+    if executable == ''
         call neoformat#utils#log('no exe field in definition')
         return {}
     endif
-    if !executable(cmd)
-        call neoformat#utils#log('cmd: ' . cmd . ' is not an executable')
+    if !executable(executable)
+        call neoformat#utils#log('executable: ' . executable . ' is not an executable')
         return {}
     endif
 
@@ -145,35 +151,24 @@ function! s:generate_cmd(definition, filetype) abort
         let args_expanded = add(args_expanded, s:expand_fully(a))
     endfor
 
-    let replace   = get(a:definition, 'replace', 0)
     let no_append = get(a:definition, 'no_append', 0)
     let using_stdin = get(a:definition, 'stdin', 0)
 
-    if !exists('g:neoformat_read_from_buffer')
-        let g:neoformat_read_from_buffer = 1
-    endif
-
-    " 1. create temp file from buffer data
-    if isdirectory('/tmp/') && g:neoformat_read_from_buffer && !using_stdin
-        if !isdirectory('/tmp/neoformat/')
-            call mkdir('/tmp/neoformat/')
-        endif
+    " Write buffer data to /tmp/ file if formatter doesn't use stdin
+    if !using_stdin
+        let base_tmp_path = '/tmp/neoformat/'
+        call mkdir(base_tmp_path, 'p')
 
         " get the last path component, the filename
         let filename = expand('%:t')
-        let path     = '/tmp/neoformat/' . fnameescape(filename)
+        let path     = base_tmp_path . fnameescape(filename)
         let data     = getbufline(bufnr('%'), 1, '$')
         call writefile(data, path)
-    " 2. read from file instead of buffer
-    elseif !using_stdin && replace == 1
-        " /Users/sloth/documents/example.vim
-        let path = fnameescape(expand('%:p'))
-    " 3. no path, using either stdin or no_append
     else
         let path = ''
     endif
 
-    let _fullcmd = cmd . ' ' . join(args_expanded) . ' ' . path
+    let _fullcmd = executable . ' ' . join(args_expanded) . ' ' . (no_append ? '' : path)
     " make sure there aren't any double spaces in the cmd
     let fullcmd = join(split(_fullcmd))
 
@@ -181,6 +176,8 @@ function! s:generate_cmd(definition, filetype) abort
         \ 'exe':       fullcmd,
         \ 'stdin':     using_stdin,
         \ 'name':      a:definition.exe,
+        \ 'replace':   get(a:definition, 'replace', 0),
+        \ 'tmp_file_path': path,
         \ }
 endfunction
 
