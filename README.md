@@ -99,6 +99,12 @@ let g:neoformat_basic_format_retab = 1
 let g:neoformat_basic_format_trim = 1
 ```
 
+Have Neoformat only msg when there is an error
+
+```viml
+let g:neoformat_only_msg_on_error = 1
+```
+
 When debugging, you can enable either of following variables for extra logging.
 
 ```viml
