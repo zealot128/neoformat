@@ -204,6 +204,7 @@ endfunction
     [`astyle`](http://astyle.sourceforge.net)
 - Javascript
   - [`js-beautify`](https://github.com/beautify-web/js-beautify),
+    [`prettier`](https://github.com/jlongster/prettier),
     [`prettydiff`](https://github.com/prettydiff/prettydiff),
     [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html),
     [`esformatter`](https://github.com/millermedeiros/esformatter/)

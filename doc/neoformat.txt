@@ -156,99 +156,114 @@ See Config above for options
 SUPPORTED FILETYPES				*neoformat-supported-filetypes*
 
 - Arduino
-  - [uncrustify](http://uncrustify.sourceforge.net),
-    [clang-format](http://clang.llvm.org/docs/ClangFormat.html),
-    [astyle](http://astyle.sourceforge.net)
+  - [`uncrustify`](http://uncrustify.sourceforge.net),
+    [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html),
+    [`astyle`](http://astyle.sourceforge.net)
 - C
-  - [uncrustify](http://uncrustify.sourceforge.net),
-    [clang-format](http://clang.llvm.org/docs/ClangFormat.html),
-    [astyle](http://astyle.sourceforge.net)
+  - [`uncrustify`](http://uncrustify.sourceforge.net),
+    [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html),
+    [`astyle`](http://astyle.sourceforge.net)
 - C#
-  - [uncrustify](http://uncrustify.sourceforge.net),
-    [astyle](http://astyle.sourceforge.net)
+  - [`uncrustify`](http://uncrustify.sourceforge.net),
+    [`astyle`](http://astyle.sourceforge.net)
 - C++
-  - [uncrustify](http://uncrustify.sourceforge.net),
-    [clang-format](http://clang.llvm.org/docs/ClangFormat.html),
-    [astyle](http://astyle.sourceforge.net)
+  - [`uncrustify`](http://uncrustify.sourceforge.net),
+    [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html),
+    [`astyle`](http://astyle.sourceforge.net)
 - Crystal
-  - crystal tool format (ships with [crystal](http://crystal-lang.org))
+  - `crystal tool format` (ships with [`crystal`](http://crystal-lang.org))
 - CSS
-  - css-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify)),
-    [csscomb](http://csscomb.com)
+  - `css-beautify` (ships with [`js-beautify`](https://github.com/beautify-web/js-beautify)),
+    [`prettydiff`](https://github.com/prettydiff/prettydiff),
+    [`stylefmt`](https://github.com/morishitter/stylefmt),
+    [`csscomb`](http://csscomb.com)
+- CSV
+  - [`prettydiff`](https://github.com/prettydiff/prettydiff)
 - D
-  - [uncrustify](http://uncrustify.sourceforge.net),
-    [dfmt](https://github.com/Hackerpilot/dfmt)
+  - [`uncrustify`](http://uncrustify.sourceforge.net),
+    [`dfmt`](https://github.com/Hackerpilot/dfmt)
 - Dart
-  - [dartfmt](https://www.dartlang.org/tools/)
+  - [`dartfmt`](https://www.dartlang.org/tools/)
 - Elm
-  - [elm-format](https://github.com/avh4/elm-format)
+  - [`elm-format`](https://github.com/avh4/elm-format)
 - Go
-  - [gofmt](https://golang.org/cmd/gofmt/),
-    [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
+  - [`gofmt`](https://golang.org/cmd/gofmt/),
+    [`goimports`](https://godoc.org/golang.org/x/tools/cmd/goimports)
 - Haskell
-  - [stylish-haskell](https://github.com/jaspervdj/stylish-haskell)
+  - [`stylish-haskell`](https://github.com/jaspervdj/stylish-haskell)
 - HTML
-  - html-beautify (ships with [js-beautify](https://github.com/beautify-web/js-beautify))
+  - `html-beautify` (ships with [`js-beautify`](https://github.com/beautify-web/js-beautify)),
+    [`prettydiff`](https://github.com/prettydiff/prettydiff)
 - Jade
-  - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
+  - [`pug-beautifier`](https://github.com/vingorius/pug-beautifier)
 - Java
-  - [uncrustify](http://uncrustify.sourceforge.net),
-    [astyle](http://astyle.sourceforge.net)
+  - [`uncrustify`](http://uncrustify.sourceforge.net),
+    [`astyle`](http://astyle.sourceforge.net)
 - Javascript
-  - [js-beautify](https://github.com/beautify-web/js-beautify)
+  - [`js-beautify`](https://github.com/beautify-web/js-beautify),
+    [`prettier`](https://github.com/jlongster/prettier),
+    [`prettydiff`](https://github.com/prettydiff/prettydiff),
+    [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html),
+    [`esformatter`](https://github.com/millermedeiros/esformatter/)
 - JSON
-  - [js-beautify](https://github.com/beautify-web/js-beautify)
+  - [`js-beautify`](https://github.com/beautify-web/js-beautify),
+    [`prettydiff`](https://github.com/prettydiff/prettydiff)
 - Less
-  - [csscomb](http://csscomb.com)
+  - [`csscomb`](http://csscomb.com),
+    [`prettydiff`](https://github.com/prettydiff/prettydiff)
 - Lua
-  - [luaformatter](https://github.com/LuaDevelopmentTools/luaformatter)
+  - [`luaformatter`](https://github.com/LuaDevelopmentTools/luaformatter)
 - Markdown
-  - [remark](https://github.com/wooorm/remark)
+  - [`remark`](https://github.com/wooorm/remark)
 - Objective-C
-  - [uncrustify](http://uncrustify.sourceforge.net),
-    [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
-    [astyle](http://astyle.sourceforge.net)
+  - [`uncrustify`](http://uncrustify.sourceforge.net),
+    [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html),
+    [`astyle`](http://astyle.sourceforge.net)
 - OCaml
-  - [ocp-indent](http://www.typerex.org/ocp-indent.html)
+  - [`ocp-indent`](http://www.typerex.org/ocp-indent.html)
 - Pandoc Markdown
-  - [pandoc][https://pandoc.org/MANUAL.html]
+  - [`pandoc`](https://pandoc.org/MANUAL.html)
 - Pawn
-  - [uncrustify](http://uncrustify.sourceforge.net)
+  - [`uncrustify`](http://uncrustify.sourceforge.net)
 - Perl
-  - [perltidy](http://perltidy.sourceforge.net)
+  - [`perltidy`](http://perltidy.sourceforge.net)
 - PHP
-  - [php_beautifier](http://pear.php.net/package/PHP_Beautifier)
+  - [`php_beautifier`](http://pear.php.net/package/PHP_Beautifier)
 - Proto
-  - [clang-format](http://clang.llvm.org/docs/ClangFormat.html)
+  - [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html)
 - Pug (formally Jade)
-  - [pug-beautifier](https://github.com/vingorius/pug-beautifier)
+  - [`pug-beautifier`](https://github.com/vingorius/pug-beautifier)
 - Python
-  - [yapf](https://github.com/google/yapf),
-    [autopep8](https://github.com/hhatto/autopep8)
+  - [`yapf`](https://github.com/google/yapf),
+    [`autopep8`](https://github.com/hhatto/autopep8)
 - Ruby
-  - [ruby-beautify](https://github.com/erniebrodeur/ruby-beautify)
+  - [`ruby-beautify`](https://github.com/erniebrodeur/ruby-beautify)
 - Rust
-  - [rustfmt](https://github.com/rust-lang-nursery/rustfmt)
+  - [`rustfmt`](https://github.com/rust-lang-nursery/rustfmt)
 - Sass
-  - [sass-convert](http://sass-lang.com/documentation/#executables),
-    [csscomb](http://csscomb.com)
+  - [`sass-convert`](http://sass-lang.com/documentation/#executables),
+    [`csscomb`](http://csscomb.com)
 - Scala
-  - [scalariform](https://github.com/scala-ide/scalariform)
+  - [`scalariform`](https://github.com/scala-ide/scalariform)
 - SCSS
-  - [sass-convert](http://sass-lang.com/documentation/#executables),
-    [csscomb](http://csscomb.com)
+  - [`sass-convert`](http://sass-lang.com/documentation/#executables),
+    [`stylefmt`](https://github.com/morishitter/stylefmt),
+    [`prettydiff`](https://github.com/prettydiff/prettydiff),
+    [`csscomb`](http://csscomb.com)
 - Shell
-  - [shfmt](https://github.com/mvdan/sh)
+  - [`shfmt`](https://github.com/mvdan/sh)
 - SQL
-  - sqlformat (ships with [sqlparse](https://github.com/andialbrecht/sqlparse))
+  - `sqlformat` (ships with [sqlparse](https://github.com/andialbrecht/sqlparse))
 - Typescript
-  - [tsfmt](https://github.com/vvakame/typescript-formatter)
+  - [`tsfmt`](https://github.com/vvakame/typescript-formatter)
 - VALA
-  - [uncrustify](http://uncrustify.sourceforge.net)
+  - [`uncrustify`](http://uncrustify.sourceforge.net)
 - XHTML
-  - [tidy](http://www.html-tidy.org)
+  - [`tidy`](http://www.html-tidy.org),
+    [`prettydiff`](https://github.com/prettydiff/prettydiff)
 - XML
-  - [tidy](http://www.html-tidy.org)
+  - [`tidy`](http://www.html-tidy.org),
+    [`prettydiff`](https://github.com/prettydiff/prettydiff)
 
 ==============================================================================
 vim:tw=78:ts=8:ft=help:norl:noet:fen:noet:
