@@ -67,6 +67,7 @@ function! s:neoformat(bang, user_input, start_line, end_line) abort
 
         call neoformat#utils#log(stdin)
 
+        call neoformat#utils#log(cmd.exe)
         if cmd.stdin
             let stdout = systemlist(cmd.exe, stdin)
         else

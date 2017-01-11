@@ -39,6 +39,7 @@ endfunction
 function! neoformat#formatters#javascript#prettier() abort
     return {
         \ 'exe': 'prettier',
+        \ 'args': ['--stdin'],
         \ 'stdin': 1,
         \ }
 endfunction
