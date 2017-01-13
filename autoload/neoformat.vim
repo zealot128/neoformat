@@ -40,18 +40,19 @@ function! s:neoformat(bang, user_input, start_line, end_line) abort
 
     for formatter in formatters
 
-        if exists('g:neoformat_' . filetype . '_' . formatter)
-            let definition = g:neoformat_{filetype}_{formatter}
-        elseif s:autoload_func_exists('neoformat#formatters#' . filetype . '#' . formatter)
-            let definition =  neoformat#formatters#{filetype}#{formatter}()
-        elseif &formatprg != '' && split(&formatprg)[0] ==# formatter
+        if &formatprg != '' && split(&formatprg)[0] ==# formatter
                     \ && get(g:, 'neoformat_try_formatprg', 0)
+            call neoformat#utils#log('using formatprg')
             let fmt_prg_def = split(&formatprg)
             let definition = {
                     \ 'exe': fmt_prg_def[0],
                     \ 'args': fmt_prg_def[1:],
                     \ 'stdin': 1,
                     \ }
+        elseif exists('g:neoformat_' . filetype . '_' . formatter)
+            let definition = g:neoformat_{filetype}_{formatter}
+        elseif s:autoload_func_exists('neoformat#formatters#' . filetype . '#' . formatter)
+            let definition =  neoformat#formatters#{filetype}#{formatter}()
         else
             call neoformat#utils#log('definition not found for formatter: ' . formatter)
             if using_user_passed_formatter
@@ -119,7 +120,7 @@ endfunction
 
 function! s:get_enabled_formatters(filetype) abort
     if &formatprg != '' && get(g:, 'neoformat_try_formatprg', 0)
-        call neoformat#utils#log('using formatprg')
+        call neoformat#utils#log('adding formatprg to enabled formatters')
         let format_prg_exe = [split(&formatprg)[0]]
     else
         let format_prg_exe = []
