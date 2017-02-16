@@ -195,6 +195,8 @@ endfunction
   - [`dartfmt`](https://www.dartlang.org/tools/)
 - Elm
   - [`elm-format`](https://github.com/avh4/elm-format)
+- Fish
+  - [`fish_indent`](http://fishshell.com)
 - Go
   - [`gofmt`](https://golang.org/cmd/gofmt/),
     [`goimports`](https://godoc.org/golang.org/x/tools/cmd/goimports)
