@@ -141,7 +141,7 @@ function! s:get_enabled_formatters(filetype) abort
 endfunction
 
 function! s:deletelines(start, end) abort
-    silent! execute a:start . ',' . a:end . 'delete'
+    silent! execute a:start . ',' . a:end . 'delete _'
 endfunction
 
 function! neoformat#CompleteFormatters(ArgLead, CmdLine, CursorPos) abort
