@@ -102,7 +102,7 @@ function! s:neoformat(bang, user_input, start_line, end_line) abort
             let lines_before = getbufline(bufnr('%'), 1, a:start_line - 1)
 
             let new_buffer = lines_before + stdout + lines_after
-            if new_buffer != original_buffer
+            if new_buffer !=# original_buffer
 
                 call s:deletelines(len(new_buffer), line('$'))
 
