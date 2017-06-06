@@ -185,7 +185,8 @@ endfunction
   - `css-beautify` (ships with [`js-beautify`](https://github.com/beautify-web/js-beautify)),
     [`prettydiff`](https://github.com/prettydiff/prettydiff),
     [`stylefmt`](https://github.com/morishitter/stylefmt),
-    [`csscomb`](http://csscomb.com)
+    [`csscomb`](http://csscomb.com),
+    [`prettier`](https://github.com/prettier/prettier)
 - CSV
   - [`prettydiff`](https://github.com/prettydiff/prettydiff)
 - D
@@ -214,7 +215,7 @@ endfunction
     [`astyle`](http://astyle.sourceforge.net)
 - Javascript
   - [`js-beautify`](https://github.com/beautify-web/js-beautify),
-    [`prettier`](https://github.com/jlongster/prettier),
+    [`prettier`](https://github.com/prettier/prettier),
     [`prettydiff`](https://github.com/prettydiff/prettydiff),
     [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html),
     [`esformatter`](https://github.com/millermedeiros/esformatter/),
@@ -228,7 +229,8 @@ endfunction
   - [`latexindent`](https://github.com/cmhughes/latexindent.pl)
 - Less
   - [`csscomb`](http://csscomb.com),
-    [`prettydiff`](https://github.com/prettydiff/prettydiff)
+    [`prettydiff`](https://github.com/prettydiff/prettydiff),
+    [`prettier`](https://github.com/prettier/prettier)
 - Lua
   - [`luaformatter`](https://github.com/LuaDevelopmentTools/luaformatter)
 - Markdown
@@ -270,13 +272,15 @@ endfunction
   - [`sass-convert`](http://sass-lang.com/documentation/#executables),
     [`stylefmt`](https://github.com/morishitter/stylefmt),
     [`prettydiff`](https://github.com/prettydiff/prettydiff),
-    [`csscomb`](http://csscomb.com)
+    [`csscomb`](http://csscomb.com),
+    [`prettier`](https://github.com/prettier/prettier)
 - Shell
   - [`shfmt`](https://github.com/mvdan/sh)
 - SQL
   - `sqlformat` (ships with [sqlparse](https://github.com/andialbrecht/sqlparse))
 - Typescript
-  - [`tsfmt`](https://github.com/vvakame/typescript-formatter)
+  - [`tsfmt`](https://github.com/vvakame/typescript-formatter),
+    [`prettier`](https://github.com/prettier/prettier)
 - VALA
   - [`uncrustify`](http://uncrustify.sourceforge.net)
 - XHTML
