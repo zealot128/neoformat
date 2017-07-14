@@ -256,7 +256,8 @@ that caused Neoformat to be invoked.
     [`eslint_d`](https://github.com/mantoni/eslint_d.js)
 - JSON
   - [`js-beautify`](https://github.com/beautify-web/js-beautify),
-    [`prettydiff`](https://github.com/prettydiff/prettydiff)
+    [`prettydiff`](https://github.com/prettydiff/prettydiff),
+    [`prettier`](https://github.com/prettier/prettier),
     [`jq`](https://stedolan.github.io/jq/)
 - LaTeX
   - [`latexindent`](https://github.com/cmhughes/latexindent.pl)
