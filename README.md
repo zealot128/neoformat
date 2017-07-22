@@ -293,7 +293,7 @@ that caused Neoformat to be invoked.
     [`autopep8`](https://github.com/hhatto/autopep8)
   - [`isort`](https://github.com/timothycrosley/isort)
 - Ruby
-  - [`rufo`](https://github.com/asterite/rufo),
+  - [`rufo`](https://github.com/ruby-formatter/rufo),
   - [`ruby-beautify`](https://github.com/erniebrodeur/ruby-beautify),
     [`rubocop`](https://github.com/bbatsov/rubocop)
 - Rust
