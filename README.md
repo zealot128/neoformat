@@ -314,6 +314,7 @@ that caused Neoformat to be invoked.
 - PHP
   - [`php_beautifier`](http://pear.php.net/package/PHP_Beautifier)
   - [`php-cs-fixer`](http://cs.sensiolabs.org/)
+  - [`phpcbf`](https://github.com/squizlabs/PHP_CodeSniffer)
 - Proto
   - [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html)
 - Pug (formally Jade)
