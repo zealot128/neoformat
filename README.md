@@ -218,6 +218,8 @@ that caused Neoformat to be invoked.
   - [`asmfmt`](https://github.com/klauspost/asmfmt)
 - Bazel
   - [`buildifier`](https://github.com/bazelbuild/buildtools/blob/master/buildifier/README.md)
+- Beancount
+  - [`bean-format`](https://beancount.github.io/docs/running_beancount_and_generating_reports.html#bean-format)
 - C
   - [`uncrustify`](http://uncrustify.sourceforge.net),
     [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html),
@@ -365,7 +367,7 @@ that caused Neoformat to be invoked.
 - Python
   - [`yapf`](https://github.com/google/yapf),
     [`autopep8`](https://github.com/hhatto/autopep8),
-    [`black`](https://github.com/ambv/black),
+    [`black`](https://github.com/psf/black),
     [`pydevf`](https://github.com/fabioz/PyDev.Formatter),
     [`isort`](https://github.com/timothycrosley/isort),
     [`docformatter`](https://github.com/myint/docformatter),
