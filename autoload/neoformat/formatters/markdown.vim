@@ -1,5 +1,5 @@
 function! neoformat#formatters#markdown#enabled() abort
-   return ['remark', 'prettier']
+   return ['remark', 'prettier', 'denofmt']
 endfunction
 
 function! neoformat#formatters#markdown#prettier() abort
@@ -18,4 +18,12 @@ function! neoformat#formatters#markdown#remark() abort
             \ 'stdin': 1,
             \ 'try_node_exe': 1,
             \ }
+endfunction
+
+function! neoformat#formatters#markdown#denofmt() abort
+    return {
+        \ 'exe': 'deno',
+        \ 'args': ['fmt','-'],
+        \ 'stdin': 1,
+        \ }
 endfunction

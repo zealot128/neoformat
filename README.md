@@ -347,8 +347,10 @@ that caused Neoformat to be invoked.
     [`prettier`](https://github.com/prettier/prettier),
     [`jq`](https://stedolan.github.io/jq/),
     [`fixjson`](https://github.com/rhysd/fixjson)
+    [`deno fmt`](https://deno.land/manual/tools/formatter)
 - JSONC (JSON with comments)
   - [`prettier`](https://github.com/prettier/prettier)
+    [`deno fmt`](https://deno.land/manual/tools/formatter)
 - Kotlin
   - [`ktlint`](https://github.com/shyiko/ktlint),
     [`prettier`](https://github.com/prettier/prettier)
@@ -367,6 +369,7 @@ that caused Neoformat to be invoked.
 - Markdown
   - [`remark`](https://github.com/wooorm/remark)
     [`prettier`](https://github.com/prettier/prettier)
+    [`deno fmt`](https://deno.land/manual/tools/formatter)
 - Matlab
   - [`matlab-formatter-vscode`](https://github.com/affenwiesel/matlab-formatter-vscode)
 - Nginx

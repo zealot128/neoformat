@@ -1,5 +1,5 @@
 function! neoformat#formatters#json#enabled() abort
-    return ['jsbeautify', 'prettydiff', 'prettier', 'jq', 'fixjson']
+    return ['jsbeautify', 'prettydiff', 'prettier', 'jq', 'fixjson', 'denofmt']
 endfunction
 
 function! neoformat#formatters#json#jsbeautify() abort
@@ -33,5 +33,13 @@ function! neoformat#formatters#json#fixjson() abort
         \ 'args': ['--stdin-filename', l:filename],
         \ 'stdin': 1,
         \ 'try_node_exe': 1,
+        \ }
+endfunction
+
+function! neoformat#formatters#json#denofmt() abort
+    return {
+        \ 'exe': 'deno',
+        \ 'args': ['fmt','-'],
+        \ 'stdin': 1,
         \ }
 endfunction
