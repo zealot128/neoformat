@@ -288,6 +288,8 @@ SUPPORTED FILETYPES				*neoformat-supported-filetypes*
     [`gofumports`](https://github.com/mvdan/gofumpt)
 - GLSL
   - [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html)
+- GN
+  - [`gn`](http://gn.googlesource.com/gn)
 - GraphQL
   - [`prettier`](https://github.com/prettier/prettier)
 - Haskell

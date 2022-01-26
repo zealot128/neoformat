@@ -298,6 +298,8 @@ that caused Neoformat to be invoked.
     [`gofumports`](https://github.com/mvdan/gofumpt)
 - GLSL
   - [`clang-format`](http://clang.llvm.org/docs/ClangFormat.html)
+- GN
+  - [`gn`](https://gn.googlesource.com/gn)
 - GraphQL
   - [`prettier`](https://github.com/prettier/prettier)
 - Haskell
