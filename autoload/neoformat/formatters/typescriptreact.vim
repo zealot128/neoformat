@@ -1,5 +1,5 @@
 function! neoformat#formatters#typescriptreact#enabled() abort
-   return ['tsfmt', 'prettier', 'prettiereslint', 'tslint', 'eslint_d', 'clangformat', 'denofmt']
+   return ['tsfmt', 'prettierd', 'prettier', 'prettiereslint', 'tslint', 'eslint_d', 'clangformat', 'denofmt']
 endfunction
 
 function! neoformat#formatters#typescriptreact#tsfmt() abort
@@ -17,6 +17,14 @@ function! neoformat#formatters#typescriptreact#prettier() abort
         \ 'args': ['--stdin-filepath', '"%:p"', '--parser', 'typescript'],
         \ 'stdin': 1,
         \ 'try_node_exe': 1,
+        \ }
+endfunction
+
+function! neoformat#formatters#typescriptreact#prettierd() abort
+    return {
+        \ 'exe': 'prettierd',
+        \ 'args': ['"%:p"'],
+        \ 'stdin': 1,
         \ }
 endfunction
 
