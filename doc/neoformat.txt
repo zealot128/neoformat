@@ -363,6 +363,8 @@ SUPPORTED FILETYPES				*neoformat-supported-filetypes*
     [`prettier`](https://github.com/prettier/prettier),
     [`prettydiff`](https://github.com/prettydiff/prettydiff),
     [`stylelint`](https://stylelint.io/)
+- Liquid
+  - [`prettier`](https://github.com/Shopify/prettier-plugin-liquid)
 - Lua
   - [`luaformatter`](https://github.com/LuaDevelopmentTools/luaformatter)
   - [`lua-fmt`](https://github.com/trixnz/lua-fmt)

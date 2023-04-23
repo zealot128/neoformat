@@ -394,6 +394,8 @@ that caused Neoformat to be invoked.
     [`prettierd`](https://github.com/fsouza/prettierd),
     [`prettier`](https://github.com/prettier/prettier),
     [`stylelint`](https://stylelint.io/)
+- Liquid
+  - [`prettier`](https://github.com/Shopify/prettier-plugin-liquid)
 - Lua
   - [`luaformatter`](https://github.com/LuaDevelopmentTools/luaformatter)
   - [`lua-fmt`](https://github.com/trixnz/lua-fmt)
